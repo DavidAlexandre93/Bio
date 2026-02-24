@@ -5,16 +5,23 @@
   font-family: "Saira";
 }
 
+html {
+  scroll-behavior: smooth;
+  font-size: 62.5%;
+}
+
+body {
+  font-family: "Saira";
+  background: radial-gradient(circle at 20% 15%, #251845, #080713 45%);
+  padding: 64px 24px;
+  color: #fafafa;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
 ::selection {
   background-color: #6610f2;
   color: #fafafa;
-}
-
-ul,
-ol {
-  list-style: none;
-  margin: 0;
-  padding: 0;
 }
 
 a {
@@ -25,39 +32,6 @@ img {
   max-width: 100%;
   height: auto;
   display: block;
-}
-
-p,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  margin: 0;
-}
-
-button,
-input {
-  border: 0;
-  font-family: "Saira";
-}
-
-button:focus,
-input:focus {
-  border: 0;
-}
-
-body {
-  font-family: "Saira";
-  background-color: #080713;
-  padding: 64px 24px;
-  color: #fafafa;
-}
-
-html {
-  scroll-behavior: smooth;
-  font-size: 62.5%;
 }
 
 ::-webkit-scrollbar {
@@ -73,93 +47,126 @@ html {
   border-radius: 8px;
 }
 
-header {
+.scene-glow {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: -1;
+  background: radial-gradient(circle at 78% 20%, rgba(123, 98, 255, 0.5), transparent 35%),
+    radial-gradient(circle at 15% 75%, rgba(30, 116, 255, 0.45), transparent 32%);
+}
+
+.hero {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   margin-bottom: 64px;
+  text-align: center;
 }
 
-header img {
+.profile {
   height: 128px;
   width: 128px;
   border-radius: 50%;
   margin-bottom: 24px;
-  transition: 0.2s;
+  box-shadow: 0 0 0 rgba(146, 61, 255, 0.6);
 }
 
-header img:hover {
-  outline: 4px solid #fafafa;
-}
-
-header h1 {
-  font-size: 4rem;
+.hero-title {
+  font-size: clamp(3rem, 7vw, 4.8rem);
   font-weight: 500;
 }
 
-header p {
+.hero-tag {
   margin-top: 8px;
-  font-size: 2.4rem;
+  font-size: clamp(2rem, 4vw, 2.6rem);
   background: linear-gradient(70deg, #923dff 13%, #ac76ff 94%);
   font-weight: 400;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
-section {
-  max-width: 600px;
+.links-section {
+  max-width: 900px;
   margin: 32px auto;
 }
 
-section h2 {
+.section-title {
   font-size: 2.4rem;
   font-weight: 400;
+  margin: 12px 0 16px;
 }
 
-section div {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-  margin: 32px auto;
+.links-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  margin: 20px auto 40px;
   gap: 16px;
 }
 
-section div a {
-  flex-basis: 200px;
-  flex-grow: 1;
-}
-
-@media screen and (max-width: 768px) {
-  section div a {
-    flex-basis: 600px;
-  }
-}
-
-section div article {
+.link-card {
   min-height: 96px;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 8px;
-  border-radius: 4px;
+  padding: 12px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: var(--card-gradient);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.22);
+  transform-style: preserve-3d;
+  position: relative;
+  overflow: hidden;
 }
 
-section div article:hover img {
-  width: 32px;
+.link-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(120deg, transparent 35%, rgba(255, 255, 255, 0.55), transparent 65%);
+  transform: translateX(-150%);
 }
 
-section div article img {
+.link-card img {
   width: 28px;
   margin-right: 16px;
-  transition: 0.4s;
+  transform: translateZ(24px);
 }
 
-section div article h2 {
+.link-card h3 {
   text-align: center;
   font-size: 2.4rem;
   font-weight: 400;
   color: #fafafa;
+  transform: translateZ(24px);
 }
-/*# sourceMappingURL=style.css.map */
+
+.support {
+  margin: 32px auto 48px;
+  padding: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 14px;
+  backdrop-filter: blur(6px);
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.02));
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+}
+
+.support h2 {
+  font-size: 2.1rem;
+  text-align: center;
+  font-weight: 400;
+}
+
+@media screen and (max-width: 768px) {
+  body {
+    padding: 42px 16px;
+  }
+
+  .link-card h3 {
+    font-size: 2.2rem;
+  }
+}

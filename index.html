@@ -31,7 +31,6 @@
       href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400&family=IBM+Plex+Sans:wght@500&display=swap"
       rel="stylesheet"
     />
-
     <link
       href="https://fonts.googleapis.com/css2?family=Saira:wght@100;200;300;400;500&display=swap"
       rel="stylesheet"
@@ -41,191 +40,98 @@
   </head>
 
   <body>
-    <header>
+    <div class="scene-glow" aria-hidden="true"></div>
+    <header class="hero">
       <img
+        class="profile"
         src="https://avatars.githubusercontent.com/DavidAlexandre93"
         alt="Foto davidalexandre"
-        width="125px"
-        height="125px"
+        width="125"
+        height="125"
       />
-      <h1>David Alexandre Fernandes</h1>
-      <p>@DavidAlexandre93</p>
+      <h1 class="hero-title">David Alexandre Fernandes</h1>
+      <p class="hero-tag">@DavidAlexandre93</p>
     </header>
+
     <main>
-      <section>
-        <div>
-          <a
-            href="https://daf-web-site.vercel.app/"
-            rel="noopener"
-            target="_blank"
-          >
-            <article
-              style="
-                background: linear-gradient(90deg, #e2dbdb 1%, #582bf3 99%);
-              "
-            >
-              <img
-                src="assets/icons/book.svg"
-                alt="ícone livros"
-                width="28px"
-                height="28px"
-              />
-              <h2>Website</h2>
+      <section class="links-section">
+        <h2 class="section-title">Projetos em destaque</h2>
+        <div class="links-grid" data-animate="cards">
+          <a href="https://daf-web-site.vercel.app/" rel="noopener" target="_blank">
+            <article class="link-card" style="--card-gradient: linear-gradient(90deg, #e2dbdb 1%, #582bf3 99%)">
+              <img src="assets/icons/book.svg" alt="ícone livros" width="28" height="28" />
+              <h3>Website</h3>
             </article>
           </a>
 
           <a href="https://daf-portfolio.vercel.app/" rel="noopener" target="_blank">
-            <article
-              style="
-                background: linear-gradient(70deg, #e2dbdb 1%, #ac76ff 99%);
-              "
-            >
-              <img
-                src="assets/icons/code.svg"
-                alt="ícone feliz"
-                width="28px"
-                height="28px"
-              />
-              <h2>Portfólio</h2>
+            <article class="link-card" style="--card-gradient: linear-gradient(70deg, #e2dbdb 1%, #ac76ff 99%)">
+              <img src="assets/icons/code.svg" alt="ícone feliz" width="28" height="28" />
+              <h3>Portfólio</h3>
             </article>
           </a>
 
-          <a
-            href="https://bio-portfolio.vercel.app/"
-            rel="noopener"
-            target="_blank"
-          >
-            <article
-              style="
-                background: linear-gradient(90deg, #e2dbdb 1%, #4d7cff 99%);
-              "
-            >
-              <img
-                src="assets/icons/setup.svg"
-                alt="ícone livros"
-                width="28px"
-                height="28px"
-              />
-              <h2>Bio-Portfolio</h2>
+          <a href="https://bio-portfolio.vercel.app/" rel="noopener" target="_blank">
+            <article class="link-card" style="--card-gradient: linear-gradient(90deg, #e2dbdb 1%, #4d7cff 99%)">
+              <img src="assets/icons/setup.svg" alt="ícone livros" width="28" height="28" />
+              <h3>Bio-Portfolio</h3>
             </article>
-          </a>         
-        </div>
-        <div>
-          <h2> a ⭐️ If Github projects helped you! </h2>
-          <br /><br />
-          <p>
-            <a href="https://www.buymeacoffee.com/davidfernandes"> <img align="left" src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" height="50" width="210" alt="buymeacoffee.com/davidfernandes" /></a>
-          </p>
-          <br /><br />
+          </a>
         </div>
 
-        <h2>Contato e Redes Profissionais</h2>
-
-        <div>
-          <a
-            href="https://www.vercel.com/davidalexandrefernandes"
-            rel="noopener"
-            target="_blank"
-          >
-            <article
-              style="background: linear-gradient(58deg, #e2dbdb 1%, #2a2e31 99%);"
-            >
-              <img
-                src="assets/icons/instagram.svg"
-                alt="ícone instagram"
-                width="28px"
-                height="28px"
-              />
-              <h2>Vercel</h2>
-            </article>
+        <div class="support" data-animate="support">
+          <h2>a ⭐️ If Github projects helped you!</h2>
+          <a href="https://www.buymeacoffee.com/davidfernandes">
+            <img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" height="50" width="210" alt="buymeacoffee.com/davidfernandes" />
           </a>
-          <a
-            href="https://www.linkedin.com/in/david-fernandes-08b005b4/"
-            rel="noopener"
-            target="_blank"
-          >
-            <article
-              style="
-                background: linear-gradient(
-                  90deg,
-                  rgb(217, 220, 228) 1%,
-                  rgba(47, 41, 157, 1) 99%
-                );
-              "
-            >
-              <img
-                src="assets/icons/linkedin.svg"
-                alt="ícone linkedin"
-                width="28px"
-                height="28px"
-              />
-              <h2>Linkedin</h2>
+        </div>
+
+        <h2 class="section-title">Contato e Redes Profissionais</h2>
+        <div class="links-grid" data-animate="cards">
+          <a href="https://www.vercel.com/davidalexandrefernandes" rel="noopener" target="_blank">
+            <article class="link-card" style="--card-gradient: linear-gradient(58deg, #e2dbdb 1%, #2a2e31 99%)">
+              <img src="assets/icons/instagram.svg" alt="ícone instagram" width="28" height="28" />
+              <h3>Vercel</h3>
             </article>
           </a>
 
-          <a
-            href="https://discord.gg/ZQ5eS4AXc4"
-            rel="noopener"
-            target="_blank"
-          >
-            <article
-              style="
-                background: linear-gradient(
-                  261.65deg,
-                  #e2dbdb 1%,
-                  #283ba8 99%
-                );
-              "
-            >
-              <img
-                src="assets/icons/discord.svg"
-                alt="ícone discord"
-                width="28px"
-                height="28px"
-              />
-              <h2>Discord</h2>
+          <a href="https://www.linkedin.com/in/david-fernandes-08b005b4/" rel="noopener" target="_blank">
+            <article class="link-card" style="--card-gradient: linear-gradient(90deg, rgb(217, 220, 228) 1%, rgba(47, 41, 157, 1) 99%)">
+              <img src="assets/icons/linkedin.svg" alt="ícone linkedin" width="28" height="28" />
+              <h3>Linkedin</h3>
+            </article>
+          </a>
+
+          <a href="https://discord.gg/ZQ5eS4AXc4" rel="noopener" target="_blank">
+            <article class="link-card" style="--card-gradient: linear-gradient(261.65deg, #e2dbdb 1%, #283ba8 99%)">
+              <img src="assets/icons/discord.svg" alt="ícone discord" width="28" height="28" />
+              <h3>Discord</h3>
             </article>
           </a>
 
           <a href="https://github.com/DavidAlexandre93" rel="noopener" target="_blank">
-            <article
-              style="
-                background: linear-gradient(58deg, #e2dbdb 1%, #2a3338 99%);
-              "
-            >
-              <img
-                src="assets/icons/github.svg"
-                alt="ícone github"
-                width="28px"
-                height="28px"
-              />
-              <h2>GitHub</h2>
+            <article class="link-card" style="--card-gradient: linear-gradient(58deg, #e2dbdb 1%, #2a3338 99%)">
+              <img src="assets/icons/github.svg" alt="ícone github" width="28" height="28" />
+              <h3>GitHub</h3>
             </article>
           </a>
 
           <a href="https://calendly.com/davidalexandrefernandes" rel="noopener" target="_blank">
-            <article
-              style="
-                background: linear-gradient(58deg, #e2dbdb 1%, #122ab6 99%);
-              "
-            >
-              <img
-                src="assets/icons/email.svg"
-                alt="ícone email"
-                width="28px"
-                height="28px"
-              />
-              <h2>E-mail</h2>
+            <article class="link-card" style="--card-gradient: linear-gradient(58deg, #e2dbdb 1%, #122ab6 99%)">
+              <img src="assets/icons/email.svg" alt="ícone email" width="28" height="28" />
+              <h3>E-mail</h3>
             </article>
           </a>
         </div>
       </section>
     </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+    <script type="module" src="assets/js/animations.js"></script>
     <script>
       window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
     </script>
     <script defer src="/_vercel/insights/script.js"></script>
   </body>
 </html>
-
-
