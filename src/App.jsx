@@ -28,9 +28,19 @@ function App() {
 
       <motion.main initial="hidden" animate="show" variants={containerVariants}>
         <motion.section className="links-section" variants={containerVariants}>
-          <LinksSection title="Projetos em destaque" links={highlightedProjects} sectionIndex={0} />
+          <LinksSection
+            title="Projetos em destaque"
+            description="Selecione a experiência que quer explorar primeiro: institucional, portfólio completo ou hub pessoal."
+            links={highlightedProjects}
+            sectionIndex={0}
+          />
           <SupportSection />
-          <LinksSection title="Contato e Redes Profissionais" links={socialLinks} sectionIndex={1} />
+          <LinksSection
+            title="Contato e Redes Profissionais"
+            description="Acesse os canais por intenção: networking, comunidade, código, deploys ou contato direto."
+            links={socialLinks}
+            sectionIndex={1}
+          />
         </motion.section>
       </motion.main>
       <Analytics />
