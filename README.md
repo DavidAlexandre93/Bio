@@ -1,34 +1,33 @@
-<h1 align="center">
-  ☕<br>Bio - David Alexandre Fernandes
-</h1>
+<h1 align="center">☕ Bio - David Alexandre Fernandes</h1>
 
-![Resultado final do projeto](assets/image/preview.png)
+Projeto reorganizado para uma arquitetura frontend moderna com **React + Vite**, componentização e separação por responsabilidades.
 
-<h4 align="center"><a href="https://daf-bio.vercel.app/">Clique para visitar o projeto</a></h4>
-
----
-
-## 🚀 Ambiente de desenvolvimento
-
-- **Node.js:** `20.x` (consulte `.nvmrc`)
-- **npm:** versão compatível com Node 20
+## Estrutura
 
 ```bash
-nvm use
-npm install
+.
+├── public/
+│   └── assets/        # imagens e ícones estáticos
+├── src/
+│   ├── components/    # componentes reutilizáveis de UI
+│   ├── data/          # dados de conteúdo centralizados
+│   ├── hooks/         # lógica de animação e comportamento
+│   ├── styles/        # estilos globais
+│   ├── App.jsx
+│   └── main.jsx
+├── index.html
+└── vite.config.js
 ```
 
-<h2>🦄 Autor</h2>
+## Scripts
 
-<table>
-  <tr>
-    <td align="center">
-      <a href="https://github.com/DavidAlexandre93">
-        <img src="https://avatars3.githubusercontent.com/DavidAlexandre93" width="100px;" alt="Foto do David Alexandre Fernandes no GitHub"/><br>
-        <sub>
-          <b>David Alexandre Fernandes</b>
-        </sub>
-      </a>
-    </td>
-  </tr>
-</table>
+```bash
+npm install
+npm run dev
+npm run build
+npm run preview
+```
+
+## Autor
+
+David Alexandre Fernandes
