@@ -2,7 +2,7 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-  font-family: "Saira";
+  font-family: 'Saira';
 }
 
 html {
@@ -11,7 +11,7 @@ html {
 }
 
 body {
-  font-family: "Saira";
+  font-family: 'Saira';
   background: radial-gradient(circle at 20% 15%, #251845, #080713 45%);
   padding: 64px 24px;
   color: #fafafa;
@@ -99,20 +99,38 @@ img {
   -webkit-text-fill-color: transparent;
 }
 
+.hero-role {
+  margin-top: 10px;
+  font-size: 1.6rem;
+  color: rgba(240, 238, 255, 0.82);
+  letter-spacing: 0.03em;
+}
+
 .links-section {
-  max-width: 900px;
+  max-width: 960px;
   margin: 32px auto;
+}
+
+.links-group {
+  margin-bottom: 14px;
 }
 
 .section-title {
   font-size: 2.4rem;
-  font-weight: 400;
-  margin: 12px 0 16px;
+  font-weight: 500;
+  margin: 12px 0 8px;
+}
+
+.section-description {
+  font-size: 1.5rem;
+  line-height: 1.5;
+  color: rgba(242, 240, 255, 0.72);
+  max-width: 72ch;
 }
 
 .links-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   margin: 20px auto 40px;
   gap: 16px;
 }
@@ -122,11 +140,10 @@ img {
 }
 
 .link-card {
-  min-height: 96px;
+  min-height: 122px;
   display: flex;
-  justify-content: center;
   align-items: center;
-  padding: 12px;
+  padding: 14px 16px;
   border-radius: 12px;
   border: 1px solid rgba(255, 255, 255, 0.2);
   background: var(--card-gradient);
@@ -134,28 +151,65 @@ img {
   transform-style: preserve-3d;
   position: relative;
   overflow: hidden;
+  gap: 12px;
 }
 
 .link-card::before {
-  content: "";
+  content: '';
   position: absolute;
   inset: 0;
   background: linear-gradient(120deg, transparent 35%, rgba(255, 255, 255, 0.55), transparent 65%);
   transform: translateX(-150%);
+  transition: transform 0.55s ease;
+}
+
+.link-card:hover::before {
+  transform: translateX(130%);
+}
+
+.link-card-icon-wrap {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  background: rgba(8, 7, 19, 0.28);
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
 }
 
 .link-card img {
   width: 28px;
-  margin-right: 16px;
+  transform: translateZ(24px);
+}
+
+.link-card-content {
   transform: translateZ(24px);
 }
 
 .link-card h3 {
-  text-align: center;
-  font-size: 2.4rem;
-  font-weight: 400;
+  font-size: 2.2rem;
+  font-weight: 500;
   color: #fafafa;
-  transform: translateZ(24px);
+}
+
+.link-card p {
+  margin-top: 2px;
+  font-size: 1.35rem;
+  color: rgba(250, 250, 250, 0.9);
+  line-height: 1.35;
+}
+
+.link-card-accent {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  padding: 3px 8px;
+  border-radius: 999px;
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  background: rgba(9, 9, 16, 0.38);
+  border: 1px solid rgba(255, 255, 255, 0.28);
 }
 
 .support {
@@ -182,7 +236,11 @@ img {
     padding: 42px 16px;
   }
 
+  .link-card {
+    min-height: 116px;
+  }
+
   .link-card h3 {
-    font-size: 2.2rem;
+    font-size: 2rem;
   }
 }

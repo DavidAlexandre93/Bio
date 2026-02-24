@@ -46,6 +46,9 @@ export function Hero({ profile }) {
       <motion.p className="hero-tag" variants={heroItem}>
         {profile.tag}
       </motion.p>
+      <motion.p className="hero-role" variants={heroItem}>
+        {profile.role}
+      </motion.p>
     </motion.header>
   );
 }

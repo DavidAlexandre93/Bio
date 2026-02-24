@@ -24,9 +24,9 @@ const gridVariants = {
   }
 };
 
-export function LinksSection({ title, links, sectionIndex = 0 }) {
+export function LinksSection({ title, description, links, sectionIndex = 0 }) {
   return (
-    <>
+    <section className="links-group" data-section-index={sectionIndex}>
       <motion.h2
         className="section-title"
         variants={titleVariants}
@@ -36,6 +36,17 @@ export function LinksSection({ title, links, sectionIndex = 0 }) {
       >
         {title}
       </motion.h2>
+      {description ? (
+        <motion.p
+          className="section-description"
+          initial={{ opacity: 0, y: 10 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.8 }}
+          transition={{ duration: 0.5 }}
+        >
+          {description}
+        </motion.p>
+      ) : null}
       <motion.div
         className="links-grid"
         data-animate="cards"
@@ -48,6 +59,6 @@ export function LinksSection({ title, links, sectionIndex = 0 }) {
           <LinkCard key={link.title} sectionIndex={sectionIndex} cardIndex={index} {...link} />
         ))}
       </motion.div>
-    </>
+    </section>
   );
 }
