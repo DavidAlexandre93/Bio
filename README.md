@@ -6,8 +6,17 @@
 
 <h4 align="center"><a href="https://daf-bio.vercel.app/">Clique para visitar o projeto</a></h4>
 
-
 ---
+
+## 🚀 Ambiente de desenvolvimento
+
+- **Node.js:** `20.x` (consulte `.nvmrc`)
+- **npm:** versão compatível com Node 20
+
+```bash
+nvm use
+npm install
+```
 
 <h2>🦄 Autor</h2>
 
@@ -23,5 +32,3 @@
     </td>
   </tr>
 </table>
-
-

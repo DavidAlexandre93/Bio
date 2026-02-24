@@ -1,4 +1,9 @@
 {
+  "name": "bio",
+  "private": true,
+  "engines": {
+    "node": "20.x"
+  },
   "dependencies": {
     "@vercel/analytics": "^1.1.1"
   }
