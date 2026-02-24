@@ -56,6 +56,17 @@ img {
     radial-gradient(circle at 15% 75%, rgba(30, 116, 255, 0.45), transparent 32%);
 }
 
+.scene-grid {
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  pointer-events: none;
+  background-image: linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+  background-size: 36px 36px;
+  mask-image: radial-gradient(circle at center, rgba(0, 0, 0, 0.75), transparent 85%);
+}
+
 .hero {
   display: flex;
   justify-content: center;
@@ -81,7 +92,8 @@ img {
 .hero-tag {
   margin-top: 8px;
   font-size: clamp(2rem, 4vw, 2.6rem);
-  background: linear-gradient(70deg, #923dff 13%, #ac76ff 94%);
+  background: linear-gradient(70deg, #923dff 13%, #ac76ff 42%, #64abff 67%, #ac76ff 94%);
+  background-size: 200% 100%;
   font-weight: 400;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -103,6 +115,10 @@ img {
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   margin: 20px auto 40px;
   gap: 16px;
+}
+
+.links-grid > a {
+  display: block;
 }
 
 .link-card {
