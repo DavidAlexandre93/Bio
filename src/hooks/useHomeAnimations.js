@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { animate, hover, inView, scroll } from 'motion';
+import { animate, inView, scroll } from 'motion';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -23,13 +23,13 @@ export function useHomeAnimations() {
         { margin: '-6%' }
       );
 
-      const stopHover = hover(card, () => {
+      const handleHoverStart = () => {
         animate(card.querySelector('h3'), { y: [0, -1.5, 0] }, { duration: 0.35 });
+      };
 
-        return () => {
-          animate(card.querySelector('h3'), { y: 0 }, { duration: 0.2 });
-        };
-      });
+      const handleHoverEnd = () => {
+        animate(card.querySelector('h3'), { y: 0 }, { duration: 0.2 });
+      };
 
       const handleMove = (event) => {
         const bounds = card.getBoundingClientRect();
@@ -44,12 +44,15 @@ export function useHomeAnimations() {
 
       card.addEventListener('pointermove', handleMove);
       card.addEventListener('pointerleave', handleLeave);
+      card.addEventListener('pointerenter', handleHoverStart);
+      card.addEventListener('pointerleave', handleHoverEnd);
 
       cleanupCallbacks.push(() => {
         stopInView();
-        stopHover();
         card.removeEventListener('pointermove', handleMove);
         card.removeEventListener('pointerleave', handleLeave);
+        card.removeEventListener('pointerenter', handleHoverStart);
+        card.removeEventListener('pointerleave', handleHoverEnd);
       });
     });
 
