@@ -1,7 +1,7 @@
 export const profile = {
   name: 'David Alexandre Fernandes',
   tag: '@DavidAlexandre93',
-  role: 'Engenheiro Front-end • React • Motion Design',
+  role: 'Engenheiro de software',
   image: 'https://avatars.githubusercontent.com/DavidAlexandre93',
   imageAlt: 'Foto davidalexandre'
 };
