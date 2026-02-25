@@ -158,9 +158,17 @@ img {
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(120deg, transparent 35%, rgba(255, 255, 255, 0.55), transparent 65%);
+  background: linear-gradient(120deg, transparent 35%, rgba(255, 255, 255, 0.3), transparent 65%);
   transform: translateX(-150%);
   transition: transform 0.55s ease;
+}
+
+.link-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(8, 7, 19, 0.08);
+  pointer-events: none;
 }
 
 .link-card:hover::before {
@@ -183,6 +191,8 @@ img {
 }
 
 .link-card-content {
+  position: relative;
+  z-index: 1;
   transform: translateZ(24px);
 }
 
@@ -210,6 +220,7 @@ img {
   letter-spacing: 0.04em;
   background: rgba(9, 9, 16, 0.38);
   border: 1px solid rgba(255, 255, 255, 0.28);
+  z-index: 1;
 }
 
 .support {
