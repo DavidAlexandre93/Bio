@@ -1,6 +1,6 @@
 import { motion } from 'motion/react';
 
-export function SupportSection() {
+export function SupportSection({ title }) {
   return (
     <motion.div
       className="support"
@@ -16,7 +16,7 @@ export function SupportSection() {
         viewport={{ once: true, amount: 0.8 }}
         transition={{ duration: 0.45, delay: 0.1 }}
       >
-        a ⭐️ If Github projects helped you!
+        {title}
       </motion.h2>
       <motion.a
         className="support-link"
