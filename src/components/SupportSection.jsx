@@ -19,6 +19,7 @@ export function SupportSection() {
         a ⭐️ If Github projects helped you!
       </motion.h2>
       <motion.a
+        className="support-link"
         href="https://www.buymeacoffee.com/davidfernandes"
         rel="noreferrer"
         target="_blank"

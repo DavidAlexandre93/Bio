@@ -19,6 +19,11 @@ body {
   overflow-x: hidden;
 }
 
+#root {
+  width: min(100%, 1120px);
+  margin: 0 auto;
+}
+
 ::selection {
   background-color: #6610f2;
   color: #fafafa;
@@ -72,7 +77,8 @@ img {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  margin-bottom: 64px;
+  margin-bottom: clamp(3.2rem, 6vw, 6.4rem);
+  padding-inline: clamp(0.2rem, 2vw, 1.4rem);
   text-align: center;
 }
 
@@ -101,13 +107,13 @@ img {
 
 .hero-role {
   margin-top: 10px;
-  font-size: 1.6rem;
+  font-size: clamp(1.45rem, 2.4vw, 1.75rem);
   color: rgba(240, 238, 255, 0.82);
   letter-spacing: 0.03em;
 }
 
 .links-section {
-  max-width: 960px;
+  max-width: 100%;
   margin: 32px auto;
 }
 
@@ -116,13 +122,13 @@ img {
 }
 
 .section-title {
-  font-size: 2.4rem;
+  font-size: clamp(2rem, 3.8vw, 2.8rem);
   font-weight: 500;
   margin: 12px 0 8px;
 }
 
 .section-description {
-  font-size: 1.5rem;
+  font-size: clamp(1.4rem, 2.1vw, 1.65rem);
   line-height: 1.5;
   color: rgba(242, 240, 255, 0.72);
   max-width: 72ch;
@@ -130,7 +136,7 @@ img {
 
 .links-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr));
   margin: 20px auto 40px;
   gap: 16px;
 }
@@ -140,7 +146,7 @@ img {
 }
 
 .link-card {
-  min-height: 122px;
+  min-height: clamp(110px, 14vw, 122px);
   display: flex;
   align-items: center;
   padding: 14px 16px;
@@ -197,14 +203,14 @@ img {
 }
 
 .link-card h3 {
-  font-size: 2.2rem;
+  font-size: clamp(1.9rem, 3.1vw, 2.2rem);
   font-weight: 500;
   color: #fafafa;
 }
 
 .link-card p {
   margin-top: 2px;
-  font-size: 1.35rem;
+  font-size: clamp(1.25rem, 2.1vw, 1.42rem);
   color: rgba(250, 250, 250, 0.9);
   line-height: 1.35;
 }
@@ -237,21 +243,89 @@ img {
 }
 
 .support h2 {
-  font-size: 2.1rem;
+  font-size: clamp(1.8rem, 3.3vw, 2.2rem);
   text-align: center;
   font-weight: 400;
 }
 
+.support-link {
+  width: min(100%, 240px);
+}
+
+.support-link img {
+  width: 100%;
+  height: auto;
+}
+
 @media screen and (max-width: 768px) {
   body {
-    padding: 42px 16px;
+    padding: 40px 14px;
+  }
+
+  .hero {
+    margin-bottom: 4.2rem;
+  }
+
+  .links-grid {
+    gap: 12px;
+    margin: 18px auto 30px;
   }
 
   .link-card {
-    min-height: 116px;
+    padding: 12px;
+    border-radius: 10px;
   }
 
-  .link-card h3 {
-    font-size: 2rem;
+  .link-card-accent {
+    font-size: 1rem;
+    top: 8px;
+    right: 8px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  html {
+    font-size: 58%;
+  }
+
+  body {
+    padding: 28px 12px;
+  }
+
+  .profile {
+    width: 104px;
+    height: 104px;
+    margin-bottom: 18px;
+  }
+
+  .link-card {
+    min-height: 104px;
+    gap: 10px;
+  }
+
+  .link-card-icon-wrap {
+    width: 38px;
+    height: 38px;
+    border-radius: 8px;
+  }
+
+  .link-card img {
+    width: 24px;
+  }
+
+  .support {
+    padding: 16px;
+    gap: 10px;
+    margin-bottom: 34px;
+  }
+}
+
+@media (pointer: coarse) {
+  .link-card::before {
+    display: none;
+  }
+
+  .link-card {
+    transform: none !important;
   }
 }
