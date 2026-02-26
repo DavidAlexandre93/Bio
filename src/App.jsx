@@ -1,10 +1,13 @@
 import { Analytics } from '@vercel/analytics/react';
 import { motion } from 'motion/react';
+import { useEffect, useMemo } from 'react';
 import { Hero } from './components/Hero';
 import { LinksSection } from './components/LinksSection';
 import { SupportSection } from './components/SupportSection';
-import { highlightedProjects, profile, socialLinks } from './data/links';
+import { getLocalizedData } from './data/links';
+import { getTranslations } from './i18n/translations';
 import { useHomeAnimations } from './hooks/useHomeAnimations';
+import { useGeolocatedLanguage } from './hooks/useGeolocatedLanguage';
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -20,6 +23,14 @@ const containerVariants = {
 function App() {
   useHomeAnimations();
 
+  const language = useGeolocatedLanguage();
+  const translations = useMemo(() => getTranslations(language), [language]);
+  const { profile, highlightedProjects, socialLinks } = useMemo(() => getLocalizedData(translations), [translations]);
+
+  useEffect(() => {
+    document.documentElement.lang = language;
+  }, [language]);
+
   return (
     <>
       <div className="scene-glow" aria-hidden="true" />
@@ -29,15 +40,15 @@ function App() {
       <motion.main initial="hidden" animate="show" variants={containerVariants}>
         <motion.section className="links-section" variants={containerVariants}>
           <LinksSection
-            title="Projetos em destaque"
-            description="Selecione a experiência que quer explorar primeiro: institucional, portfólio completo ou hub pessoal."
+            title={translations.featuredTitle}
+            description={translations.featuredDescription}
             links={highlightedProjects}
             sectionIndex={0}
           />
-          <SupportSection />
+          <SupportSection title={translations.supportTitle} />
           <LinksSection
-            title="Contato e Redes Profissionais"
-            description="Acesse os canais por intenção: networking, comunidade, código, deploys ou contato direto."
+            title={translations.socialTitle}
+            description={translations.socialDescription}
             links={socialLinks}
             sectionIndex={1}
           />
