@@ -112,6 +112,39 @@ img {
   letter-spacing: 0.03em;
 }
 
+.hero-cv-button {
+  margin-top: 18px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 50px;
+  padding: 0 24px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.56);
+  font-size: clamp(1.45rem, 2.6vw, 1.7rem);
+  font-weight: 600;
+  color: #ffffff;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  background: linear-gradient(90deg, #ff4f7f 0%, #9333ea 45%, #2563eb 100%);
+  box-shadow: 0 12px 24px rgba(147, 51, 234, 0.38), 0 0 24px rgba(255, 79, 127, 0.42);
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-cv-button::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(120deg, transparent 20%, rgba(255, 255, 255, 0.38), transparent 80%);
+  transform: translateX(-140%);
+  transition: transform 0.6s ease;
+}
+
+.hero-cv-button:hover::after {
+  transform: translateX(130%);
+}
+
 .links-section {
   max-width: 100%;
   margin: 32px auto;
