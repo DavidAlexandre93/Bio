@@ -38,7 +38,7 @@ function App() {
       <Hero profile={profile} />
 
       <motion.main initial="hidden" animate="show" variants={containerVariants}>
-        <motion.section className="links-section" variants={containerVariants}>
+        <motion.section className="links-section" variants={containerVariants} aria-label={translations.featuredTitle}>
           <LinksSection
             title={translations.featuredTitle}
             description={translations.featuredDescription}

@@ -13,17 +13,25 @@ const cardVariants = {
   }
 };
 
+function trackEvent(name, params = {}) {
+  if (window.gtag) {
+    window.gtag('event', name, params);
+  }
+}
+
 export function LinkCard({ title, description, accent, href, icon, iconAlt, gradient, sectionIndex = 0, cardIndex = 0 }) {
   return (
     <motion.a
       href={href}
       rel="noopener noreferrer"
       target="_blank"
+      aria-label={`${title} - ${description}`}
       variants={cardVariants}
       whileHover={{ y: -5 }}
       transition={{ duration: 0.25 }}
       data-section-index={sectionIndex}
       data-card-index={cardIndex}
+      onClick={() => trackEvent('link_click', { title, sectionIndex, cardIndex, href })}
     >
       <motion.article className="link-card" style={{ '--card-gradient': gradient }} whileHover="hover" initial="rest" animate="rest">
         <div className="link-card-icon-wrap">
@@ -32,6 +40,8 @@ export function LinkCard({ title, description, accent, href, icon, iconAlt, grad
             alt={iconAlt}
             width="28"
             height="28"
+            loading="lazy"
+            decoding="async"
             variants={{
               rest: { rotate: 0, scale: 1 },
               hover: { rotate: [0, -10, 10, 0], scale: [1, 1.18, 1] }
