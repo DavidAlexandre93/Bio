@@ -145,6 +145,24 @@ img {
   transform: translateX(130%);
 }
 
+.hero-cv-buttons {
+  margin-top: 18px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+}
+
+.hero-cv-buttons .hero-cv-button {
+  margin-top: 0;
+}
+
+.hero-cv-button-en {
+  background: linear-gradient(90deg, #ffcf33 0%, #ff6b00 38%, #ff006e 100%);
+  border-color: rgba(255, 229, 155, 0.9);
+  box-shadow: 0 14px 26px rgba(255, 107, 0, 0.4), 0 0 30px rgba(255, 0, 110, 0.46);
+}
+
 .links-section {
   max-width: 100%;
   margin: 32px auto;

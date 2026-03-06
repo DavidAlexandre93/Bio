@@ -49,18 +49,30 @@ export function Hero({ profile }) {
       <motion.p className="hero-role" variants={heroItem}>
         {profile.role}
       </motion.p>
-      <motion.a
-        className="hero-cv-button"
-        href="https://1drv.ms/b/c/6d3c8bf67ab3908f/IQB4BlME7x0MTKdPgaCIauKZAbDHyPcUo3Sa_N_wi_NHw-A?e=8XDvg1"
-        rel="noopener noreferrer"
-        target="_blank"
-        variants={heroItem}
-        whileHover={{ scale: 1.04, y: -2 }}
-        whileTap={{ scale: 0.98 }}
-        transition={{ type: 'spring', stiffness: 320, damping: 20 }}
-      >
-        Currículo PT-BR
-      </motion.a>
+      <motion.div className="hero-cv-buttons" variants={heroItem}>
+        <motion.a
+          className="hero-cv-button"
+          href="https://1drv.ms/b/c/6d3c8bf67ab3908f/IQB4BlME7x0MTKdPgaCIauKZAbDHyPcUo3Sa_N_wi_NHw-A?e=8XDvg1"
+          rel="noopener noreferrer"
+          target="_blank"
+          whileHover={{ scale: 1.04, y: -2 }}
+          whileTap={{ scale: 0.98 }}
+          transition={{ type: 'spring', stiffness: 320, damping: 20 }}
+        >
+          Currículo PT-BR
+        </motion.a>
+        <motion.a
+          className="hero-cv-button hero-cv-button-en"
+          href="https://1drv.ms/b/c/6d3c8bf67ab3908f/IQDuTGvXj2XCTL3nOTJtGrHsAccROLJ3L75CSILAurRzMvA?e=OKdejw"
+          rel="noopener noreferrer"
+          target="_blank"
+          whileHover={{ scale: 1.04, y: -2 }}
+          whileTap={{ scale: 0.98 }}
+          transition={{ type: 'spring', stiffness: 320, damping: 20 }}
+        >
+          Currículo EN
+        </motion.a>
+      </motion.div>
     </motion.header>
   );
 }
