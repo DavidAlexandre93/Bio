@@ -163,6 +163,13 @@ img {
   box-shadow: 0 14px 26px rgba(255, 107, 0, 0.4), 0 0 30px rgba(255, 0, 110, 0.46);
 }
 
+
+.hero-cv-button-fr {
+  background: linear-gradient(90deg, #1f9d55 0%, #00b4d8 38%, #4361ee 100%);
+  border-color: rgba(178, 255, 221, 0.9);
+  box-shadow: 0 14px 26px rgba(0, 180, 216, 0.4), 0 0 30px rgba(67, 97, 238, 0.46);
+}
+
 .links-section {
   max-width: 100%;
   margin: 32px auto;
