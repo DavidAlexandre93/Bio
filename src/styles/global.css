@@ -398,6 +398,7 @@ img {
   .profile {
     width: 104px;
     height: 104px;
+    margin-left: -48px;
   }
 
   .hero-profile-scene {
