@@ -93,17 +93,6 @@ img {
   background: radial-gradient(circle at 50% 40%, rgba(43, 25, 84, 0.95), rgba(8, 7, 19, 0.96));
   display: grid;
   place-items: center;
-  opacity: 1;
-  visibility: visible;
-  pointer-events: all;
-  transition: opacity 0.4s ease, visibility 0s linear 0s;
-}
-
-.app-loader-hidden {
-  opacity: 0;
-  visibility: hidden;
-  pointer-events: none;
-  transition: opacity 0.4s ease, visibility 0s linear 0.4s;
 }
 
 .app-loader-orb {
@@ -115,7 +104,6 @@ img {
   border-right-color: #64abff;
   display: grid;
   place-items: center;
-  animation: spin 1.2s linear infinite;
 }
 
 .app-loader-orb span {

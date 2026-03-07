@@ -66,11 +66,25 @@ function App() {
       <div className="scroll-progress" aria-hidden="true" />
       <div className="scene-glow" aria-hidden="true" />
       <div className="scene-grid" aria-hidden="true" />
-      <div className={`app-loader ${isBooting ? '' : 'app-loader-hidden'}`} aria-hidden={!isBooting}>
-        <div className="app-loader-orb">
+      <motion.div
+        className="app-loader"
+        initial={false}
+        animate={isBooting ? 'visible' : 'hidden'}
+        variants={{
+          visible: { opacity: 1, pointerEvents: 'auto' },
+          hidden: { opacity: 0, pointerEvents: 'none' }
+        }}
+        transition={{ duration: 0.45, ease: 'easeOut' }}
+        aria-hidden={!isBooting}
+      >
+        <motion.div
+          className="app-loader-orb"
+          animate={{ rotate: 360 }}
+          transition={{ duration: 1.2, ease: 'linear', repeat: Infinity }}
+        >
           <span />
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
       {referralCode ? <p className="ref-banner">Referral ativo: {referralCode}</p> : null}
       <Hero profile={profile} />
 
