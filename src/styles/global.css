@@ -503,8 +503,9 @@ img {
   .profile {
     width: 104px;
     height: 104px;
+    aspect-ratio: 1 / 1;
     margin-left: 0;
-    transform: translateX(-100px);
+    transform: translateX(-120px);
     object-position: 30% center;
   }
 
