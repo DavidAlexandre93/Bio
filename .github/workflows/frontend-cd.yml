@@ -1,0 +1,157 @@
+name: Frontend CD
+
+on:
+  push:
+    branches:
+      - develop
+      - main
+  workflow_dispatch:
+    inputs:
+      target_environment:
+        description: 'Target environment for deployment'
+        required: true
+        type: choice
+        options:
+          - staging
+          - production
+      source_ref:
+        description: 'Git ref to promote (branch, tag or SHA)'
+        required: true
+        default: 'main'
+
+permissions:
+  contents: read
+
+env:
+  NODE_ENV: production
+
+jobs:
+  build-release:
+    name: Build release bundle
+    runs-on: ubuntu-latest
+    outputs:
+      artifact-name: ${{ steps.meta.outputs.artifact_name }}
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.inputs.source_ref || github.ref }}
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: '.nvmrc'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build
+        run: npm run build
+
+      - name: Define artifact metadata
+        id: meta
+        run: echo "artifact_name=release-${GITHUB_SHA}" >> "$GITHUB_OUTPUT"
+
+      - name: Publish release artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ steps.meta.outputs.artifact_name }}
+          path: dist
+          if-no-files-found: error
+
+  deploy-development:
+    name: Deploy development
+    if: github.event_name == 'push' && github.ref == 'refs/heads/develop'
+    runs-on: ubuntu-latest
+    needs: build-release
+    environment:
+      name: development
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Download artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: ${{ needs.build-release.outputs.artifact-name }}
+          path: dist
+
+      - name: Setup SSH agent
+        uses: webfactory/ssh-agent@v0.9.0
+        with:
+          ssh-private-key: ${{ secrets.DEPLOY_SSH_KEY }}
+
+      - name: Deploy development artifact
+        env:
+          DEPLOY_HOST: ${{ secrets.DEV_DEPLOY_HOST }}
+          DEPLOY_USER: ${{ secrets.DEV_DEPLOY_USER }}
+          DEPLOY_PATH: ${{ secrets.DEV_DEPLOY_PATH }}
+        run: ./scripts/deploy.sh
+
+  deploy-staging:
+    name: Deploy staging
+    if: |
+      (github.event_name == 'push' && github.ref == 'refs/heads/main') ||
+      (github.event_name == 'workflow_dispatch' && github.event.inputs.target_environment == 'staging')
+    runs-on: ubuntu-latest
+    needs: build-release
+    environment:
+      name: staging
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Download artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: ${{ needs.build-release.outputs.artifact-name }}
+          path: dist
+
+      - name: Setup SSH agent
+        uses: webfactory/ssh-agent@v0.9.0
+        with:
+          ssh-private-key: ${{ secrets.DEPLOY_SSH_KEY }}
+
+      - name: Deploy staging artifact
+        env:
+          DEPLOY_HOST: ${{ secrets.STG_DEPLOY_HOST }}
+          DEPLOY_USER: ${{ secrets.STG_DEPLOY_USER }}
+          DEPLOY_PATH: ${{ secrets.STG_DEPLOY_PATH }}
+        run: ./scripts/deploy.sh
+
+  promote-production:
+    name: Promote to production
+    if: github.event_name == 'workflow_dispatch' && github.event.inputs.target_environment == 'production'
+    runs-on: ubuntu-latest
+    needs: build-release
+    environment:
+      name: production
+    steps:
+      - name: Validate promotion source
+        run: |
+          if [[ "${{ github.event.inputs.source_ref }}" != refs/tags/v* && "${{ github.event.inputs.source_ref }}" != "main" ]]; then
+            echo "Production promotion must come from main or refs/tags/v*"
+            exit 1
+          fi
+
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Download artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: ${{ needs.build-release.outputs.artifact-name }}
+          path: dist
+
+      - name: Setup SSH agent
+        uses: webfactory/ssh-agent@v0.9.0
+        with:
+          ssh-private-key: ${{ secrets.DEPLOY_SSH_KEY }}
+
+      - name: Deploy production artifact
+        env:
+          DEPLOY_HOST: ${{ secrets.PRD_DEPLOY_HOST }}
+          DEPLOY_USER: ${{ secrets.PRD_DEPLOY_USER }}
+          DEPLOY_PATH: ${{ secrets.PRD_DEPLOY_PATH }}
+        run: ./scripts/deploy.sh
