@@ -33,7 +33,7 @@ jobs:
       artifact-name: ${{ steps.meta.outputs.artifact_name }}
     steps:
       - name: Checkout source
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           ref: ${{ github.event.inputs.source_ref || github.ref }}
 
@@ -69,7 +69,7 @@ jobs:
       name: development
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Download artifact
         uses: actions/download-artifact@v4
@@ -100,7 +100,7 @@ jobs:
       name: staging
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Download artifact
         uses: actions/download-artifact@v4
@@ -136,7 +136,7 @@ jobs:
           fi
 
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Download artifact
         uses: actions/download-artifact@v4
