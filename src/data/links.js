@@ -25,15 +25,6 @@ export function getLocalizedData(translations) {
         iconAlt: 'ícone feliz',
         accent: 'Case Study',
         gradient: 'linear-gradient(70deg, #afa9c9 1%, #8f61d8 99%)'
-      },
-      {
-        title: 'Bio-Portfolio',
-        description: translations.projects.bioDescription,
-        href: 'https://bio-portfolio.vercel.app/',
-        icon: '/assets/icons/setup.svg',
-        iconAlt: 'ícone livros',
-        accent: translations.projects.bioAccent,
-        gradient: 'linear-gradient(90deg, #a7adc9 1%, #3f67d1 99%)'
       }
     ],
     socialLinks: [
