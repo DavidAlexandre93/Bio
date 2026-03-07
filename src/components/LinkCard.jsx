@@ -1,5 +1,4 @@
 import { motion } from 'motion/react';
-import { useState } from 'react';
 import { trackEvent } from '../utils/analytics';
 
 const cardVariants = {
@@ -16,8 +15,6 @@ const cardVariants = {
 };
 
 export function LinkCard({ title, description, accent, href, icon, iconAlt, gradient, sectionIndex = 0, cardIndex = 0 }) {
-  const [isPressed, setIsPressed] = useState(false);
-
   return (
     <motion.a
       href={href}
@@ -26,22 +23,12 @@ export function LinkCard({ title, description, accent, href, icon, iconAlt, grad
       aria-label={`${title} - ${description}`}
       variants={cardVariants}
       whileHover={{ y: -5 }}
-      whileTap={{ scale: 0.985 }}
       transition={{ duration: 0.25 }}
       data-section-index={sectionIndex}
       data-card-index={cardIndex}
-      onPointerDown={() => setIsPressed(true)}
-      onPointerUp={() => setIsPressed(false)}
-      onPointerLeave={() => setIsPressed(false)}
       onClick={() => trackEvent('link_click', { title, sectionIndex, cardIndex, href })}
     >
-      <motion.article
-        className="link-card"
-        style={{ '--card-gradient': gradient }}
-        whileHover="hover"
-        initial="rest"
-        animate={isPressed ? 'pressed' : 'rest'}
-      >
+      <motion.article className="link-card" style={{ '--card-gradient': gradient }} whileHover="hover" initial="rest" animate="rest">
         <div className="link-card-icon-wrap">
           <motion.img
             src={icon}
@@ -52,8 +39,7 @@ export function LinkCard({ title, description, accent, href, icon, iconAlt, grad
             decoding="async"
             variants={{
               rest: { rotate: 0, scale: 1 },
-              hover: { rotate: [0, -10, 10, 0], scale: [1, 1.18, 1] },
-              pressed: { rotate: 0, scale: 0.95 }
+              hover: { rotate: [0, -10, 10, 0], scale: [1, 1.18, 1] }
             }}
             transition={{ duration: 0.55, ease: 'easeInOut' }}
           />
@@ -63,8 +49,7 @@ export function LinkCard({ title, description, accent, href, icon, iconAlt, grad
           <motion.h3
             variants={{
               rest: { letterSpacing: '0em' },
-              hover: { letterSpacing: '0.03em' },
-              pressed: { letterSpacing: '0.01em' }
+              hover: { letterSpacing: '0.03em' }
             }}
             transition={{ duration: 0.2, ease: 'easeOut' }}
           >
@@ -73,17 +58,7 @@ export function LinkCard({ title, description, accent, href, icon, iconAlt, grad
           <p>{description}</p>
         </div>
 
-        <motion.span
-          className="link-card-accent"
-          variants={{
-            rest: { scale: 1 },
-            hover: { scale: 1.04 },
-            pressed: { scale: 0.98 }
-          }}
-          transition={{ duration: 0.2 }}
-        >
-          {accent}
-        </motion.span>
+        <span className="link-card-accent">{accent}</span>
       </motion.article>
     </motion.a>
   );

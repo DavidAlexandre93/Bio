@@ -29,23 +29,12 @@ function App() {
   const translations = useMemo(() => getTranslations(language), [language]);
   const { profile, highlightedProjects, socialLinks } = useMemo(() => getLocalizedData(translations), [translations]);
   const [referralCode, setReferralCode] = useState('');
-  const [isBooting, setIsBooting] = useState(true);
 
   useSeoMeta({ language, profile });
 
   useEffect(() => {
     document.documentElement.lang = language;
   }, [language]);
-
-  useEffect(() => {
-    const bootTimeout = window.setTimeout(() => {
-      setIsBooting(false);
-    }, 950);
-
-    return () => {
-      window.clearTimeout(bootTimeout);
-    };
-  }, []);
 
   useEffect(() => {
     const url = new URL(window.location.href);
@@ -63,28 +52,8 @@ function App() {
 
   return (
     <>
-      <div className="scroll-progress" aria-hidden="true" />
       <div className="scene-glow" aria-hidden="true" />
       <div className="scene-grid" aria-hidden="true" />
-      <motion.div
-        className="app-loader"
-        initial={false}
-        animate={isBooting ? 'visible' : 'hidden'}
-        variants={{
-          visible: { opacity: 1, pointerEvents: 'auto' },
-          hidden: { opacity: 0, pointerEvents: 'none' }
-        }}
-        transition={{ duration: 0.45, ease: 'easeOut' }}
-        aria-hidden={!isBooting}
-      >
-        <motion.div
-          className="app-loader-orb"
-          animate={{ rotate: 360 }}
-          transition={{ duration: 1.2, ease: 'linear', repeat: Infinity }}
-        >
-          <span />
-        </motion.div>
-      </motion.div>
       {referralCode ? <p className="ref-banner">Referral ativo: {referralCode}</p> : null}
       <Hero profile={profile} />
 

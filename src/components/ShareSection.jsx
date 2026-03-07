@@ -1,5 +1,4 @@
 import { motion } from 'motion/react';
-import { useState } from 'react';
 
 const SHARE_LABELS = {
   'pt-BR': {
@@ -7,36 +6,28 @@ const SHARE_LABELS = {
     subtitle: 'Ajude este conteúdo a alcançar mais pessoas.',
     x: 'Compartilhar no X',
     linkedin: 'Compartilhar no LinkedIn',
-    whatsapp: 'Compartilhar no WhatsApp',
-    copy: 'Copiar link',
-    copied: 'Link copiado'
+    whatsapp: 'Compartilhar no WhatsApp'
   },
   'en-US': {
     title: 'Share this hub',
     subtitle: 'Help this content reach more people.',
     x: 'Share on X',
     linkedin: 'Share on LinkedIn',
-    whatsapp: 'Share on WhatsApp',
-    copy: 'Copy link',
-    copied: 'Link copied'
+    whatsapp: 'Share on WhatsApp'
   },
   'fr-FR': {
     title: 'Partagez ce hub',
     subtitle: 'Aidez ce contenu à toucher plus de personnes.',
     x: 'Partager sur X',
     linkedin: 'Partager sur LinkedIn',
-    whatsapp: 'Partager sur WhatsApp',
-    copy: 'Copier le lien',
-    copied: 'Lien copié'
+    whatsapp: 'Partager sur WhatsApp'
   },
   'ja-JP': {
     title: 'このハブを共有',
     subtitle: 'より多くの人にこのコンテンツを届けましょう。',
     x: 'Xで共有',
     linkedin: 'LinkedInで共有',
-    whatsapp: 'WhatsAppで共有',
-    copy: 'リンクをコピー',
-    copied: 'リンクをコピーしました'
+    whatsapp: 'WhatsAppで共有'
   }
 };
 
@@ -54,18 +45,6 @@ function buildShareLinks() {
 export function ShareSection({ language }) {
   const labels = SHARE_LABELS[language] || SHARE_LABELS['en-US'];
   const shareLinks = buildShareLinks();
-  const [copyState, setCopyState] = useState('idle');
-
-  const handleCopy = async () => {
-    try {
-      setCopyState('loading');
-      await navigator.clipboard.writeText(window.location.href);
-      setCopyState('copied');
-      window.setTimeout(() => setCopyState('idle'), 1800);
-    } catch {
-      setCopyState('idle');
-    }
-  };
 
   return (
     <motion.section
@@ -88,16 +67,6 @@ export function ShareSection({ language }) {
         <a href={shareLinks.whatsapp} target="_blank" rel="noopener noreferrer">
           {labels.whatsapp}
         </a>
-        <motion.button
-          type="button"
-          className={`share-copy ${copyState !== 'idle' ? 'is-active' : ''}`}
-          onClick={handleCopy}
-          whileTap={{ scale: 0.98 }}
-          aria-live="polite"
-        >
-          {copyState === 'loading' ? <span className="copy-loader" aria-hidden="true" /> : null}
-          {copyState === 'copied' ? labels.copied : labels.copy}
-        </motion.button>
       </div>
     </motion.section>
   );
