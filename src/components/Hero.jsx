@@ -35,18 +35,45 @@ export function Hero({ profile }) {
 
   return (
     <motion.header className="hero" variants={heroContainer} initial="hidden" animate="show">
-      <motion.img
-        className="profile"
-        src={profile.image}
-        alt={profile.imageAlt}
-        width="125"
-        height="125"
-        loading="eager"
-        decoding="async"
-        variants={heroItem}
-        whileHover={{ scale: 1.06, rotate: [0, -3, 3, 0] }}
-        transition={{ duration: 0.45, ease: 'easeOut' }}
-      />
+      <motion.div className="hero-profile-scene" variants={heroItem}>
+        <motion.img
+          className="profile"
+          src={profile.image}
+          alt={profile.imageAlt}
+          width="125"
+          height="125"
+          loading="eager"
+          decoding="async"
+          whileHover={{ scale: 1.06, rotate: [0, -3, 3, 0] }}
+          transition={{ duration: 0.45, ease: 'easeOut' }}
+        />
+
+        <motion.img
+          className="hero-scratt"
+          src="/assets/image/scratt.svg"
+          alt="Scratt curioso observando a foto de perfil"
+          width="360"
+          height="360"
+          loading="lazy"
+          decoding="async"
+          initial={{ opacity: 0, scale: 0.82, x: 72, y: -54, rotate: -8 }}
+          animate={{
+            opacity: 0.96,
+            scale: 1,
+            x: [72, 88, 72],
+            y: [-54, -64, -54],
+            rotate: [-8, -4, -8]
+          }}
+          transition={{
+            opacity: { duration: 0.7, ease: 'easeOut', delay: 0.45 },
+            scale: { duration: 0.7, ease: 'easeOut', delay: 0.45 },
+            x: { duration: 3.4, repeat: Infinity, ease: 'easeInOut' },
+            y: { duration: 2.8, repeat: Infinity, ease: 'easeInOut' },
+            rotate: { duration: 2.8, repeat: Infinity, ease: 'easeInOut' }
+          }}
+          whileHover={{ scale: 1.04, rotate: -2, x: 94 }}
+        />
+      </motion.div>
       <motion.h1 className="hero-title" variants={heroItem}>
         {profile.name}
       </motion.h1>
