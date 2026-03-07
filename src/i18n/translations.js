@@ -98,15 +98,28 @@ const translations = {
   }
 };
 
-export function normalizeLanguage(language) {
+
+const SUPPORTED_LANGUAGES = Object.keys(translations);
+
+function findLanguageMatch(language) {
+  if (!language) {
+    return null;
+  }
+
   if (translations[language]) {
     return language;
   }
 
-  const languageCode = language?.split('-')[0];
-  const languageMatch = Object.keys(translations).find((key) => key.startsWith(languageCode));
+  const languageCode = language.split('-')[0];
+  return SUPPORTED_LANGUAGES.find((key) => key.startsWith(languageCode)) || null;
+}
 
-  return languageMatch || DEFAULT_LANGUAGE;
+export function normalizeLanguage(language) {
+  return findLanguageMatch(language) || DEFAULT_LANGUAGE;
+}
+
+export function isSupportedLanguage(language) {
+  return Boolean(findLanguageMatch(language));
 }
 
 export function getLanguageFromCountry(countryCode) {
@@ -117,4 +130,4 @@ export function getTranslations(language) {
   return translations[normalizeLanguage(language)];
 }
 
-export { DEFAULT_LANGUAGE };
+export { DEFAULT_LANGUAGE, SUPPORTED_LANGUAGES };
