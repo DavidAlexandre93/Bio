@@ -7,7 +7,6 @@ gsap.registerPlugin(ScrollTrigger);
 
 export function useHomeAnimations() {
   useEffect(() => {
-    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     const cards = document.querySelectorAll('.link-card');
     const cleanupCallbacks = [];
 
@@ -17,44 +16,26 @@ export function useHomeAnimations() {
         () => {
           animate(
             card,
-            { opacity: [0.45, 1], y: [18, 0], filter: ['blur(5px)', 'blur(0px)'] },
+            { opacity: [0.5, 1], y: [18, 0], filter: ['blur(5px)', 'blur(0px)'] },
             { duration: 0.55, delay: index * 0.03, easing: 'ease-out' }
           );
         },
         { margin: '-6%' }
       );
 
-      const heading = card.querySelector('h3');
-
       const handleHoverStart = () => {
-        if (!heading || prefersReducedMotion) {
-          return;
-        }
-
-        animate(heading, { y: [0, -1.5, 0] }, { duration: 0.35 });
+        animate(card.querySelector('h3'), { y: [0, -1.5, 0] }, { duration: 0.35 });
       };
 
       const handleHoverEnd = () => {
-        if (!heading || prefersReducedMotion) {
-          return;
-        }
-
-        animate(heading, { y: 0 }, { duration: 0.2 });
+        animate(card.querySelector('h3'), { y: 0 }, { duration: 0.2 });
       };
 
       const handleMove = (event) => {
-        if (prefersReducedMotion || window.matchMedia('(pointer: coarse)').matches) {
-          return;
-        }
-
         const bounds = card.getBoundingClientRect();
         const x = (event.clientX - bounds.left) / bounds.width - 0.5;
         const y = (event.clientY - bounds.top) / bounds.height - 0.5;
-
-        card.style.setProperty('--spotlight-x', `${(x + 0.5) * 100}%`);
-        card.style.setProperty('--spotlight-y', `${(y + 0.5) * 100}%`);
-
-        animate(card, { rotateX: y * -8, rotateY: x * 10 }, { duration: 0.3, easing: 'ease-out' });
+        animate(card, { rotateX: y * -10, rotateY: x * 12 }, { duration: 0.3, easing: 'ease-out' });
       };
 
       const handleLeave = () => {
@@ -83,28 +64,15 @@ export function useHomeAnimations() {
         .fromTo('.profile', { y: -16, scale: 0.92 }, { y: 0, scale: 1, duration: 0.7, ease: 'back.out(1.7)' }, '-=0.4')
         .fromTo('.hero-title', { y: 20, opacity: 0 }, { y: 0, opacity: 1, duration: 0.65, ease: 'power2.out' }, '-=0.45')
         .fromTo('.hero-tag', { y: 22, opacity: 0 }, { y: 0, opacity: 1, duration: 0.65, ease: 'power2.out' }, '-=0.4')
-        .fromTo('.hero-role', { y: 18, opacity: 0 }, { y: 0, opacity: 1, duration: 0.65, ease: 'power2.out' }, '-=0.45')
-        .fromTo('.hero-cv-buttons', { y: 14, opacity: 0 }, { y: 0, opacity: 1, duration: 0.5, ease: 'power2.out' }, '-=0.4');
+        .fromTo('.hero-role', { y: 18, opacity: 0 }, { y: 0, opacity: 1, duration: 0.65, ease: 'power2.out' }, '-=0.45');
 
-      if (!prefersReducedMotion) {
-        gsap.to('.profile', {
-          y: '+=8',
-          duration: 2.4,
-          repeat: -1,
-          yoyo: true,
-          ease: 'sine.inOut'
-        });
-
-        gsap.to('.hero-scratt', {
-          yPercent: -2,
-          xPercent: 2,
-          rotate: -5,
-          duration: 4,
-          repeat: -1,
-          yoyo: true,
-          ease: 'sine.inOut'
-        });
-      }
+      gsap.to('.profile', {
+        y: '+=8',
+        duration: 2.4,
+        repeat: -1,
+        yoyo: true,
+        ease: 'sine.inOut'
+      });
 
       gsap.utils.toArray('.links-group').forEach((section) => {
         gsap
@@ -174,33 +142,9 @@ export function useHomeAnimations() {
         repeat: -1,
         ease: 'none'
       });
-
-      if (!prefersReducedMotion) {
-        gsap.to('.hero', {
-          scrollTrigger: {
-            trigger: '.hero',
-            start: 'top top',
-            end: 'bottom top',
-            scrub: true
-          },
-          yPercent: -8,
-          scale: 0.98,
-          opacity: 0.75
-        });
-      }
     });
 
-    const scrollAnimation = scroll(
-      ({ y }) => {
-        const progressBar = document.querySelector('.scroll-progress');
-        if (!progressBar) {
-          return;
-        }
-
-        progressBar.style.setProperty('--scroll-progress', `${Math.min(Math.max(y.progress, 0), 1)}`);
-      },
-      { target: document.documentElement }
-    );
+    const scrollAnimation = scroll(animate('.scene-glow', { opacity: [1, 0.62] }));
 
     return () => {
       cleanupCallbacks.forEach((callback) => callback());
