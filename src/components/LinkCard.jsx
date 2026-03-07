@@ -1,4 +1,5 @@
 import { motion } from 'motion/react';
+import { trackEvent } from '../utils/analytics';
 
 const cardVariants = {
   hidden: { opacity: 0, y: 30, scale: 0.95 },
@@ -12,12 +13,6 @@ const cardVariants = {
     }
   }
 };
-
-function trackEvent(name, params = {}) {
-  if (window.gtag) {
-    window.gtag('event', name, params);
-  }
-}
 
 export function LinkCard({ title, description, accent, href, icon, iconAlt, gradient, sectionIndex = 0, cardIndex = 0 }) {
   return (

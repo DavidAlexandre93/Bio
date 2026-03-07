@@ -1,4 +1,5 @@
 import { motion } from 'motion/react';
+import { trackEvent } from '../utils/analytics';
 
 const heroContainer = {
   hidden: { opacity: 0, y: 24 },
@@ -26,12 +27,6 @@ const heroItem = {
     }
   }
 };
-
-function trackEvent(name, params = {}) {
-  if (window.gtag) {
-    window.gtag('event', name, params);
-  }
-}
 
 export function Hero({ profile }) {
   const trackCvClick = (language) => {
