@@ -53,8 +53,8 @@ export function Hero({ profile }) {
         className="hero-scratt"
         src="/assets/image/scratt.svg"
         alt="Scratt gigante atrás do nome Fernandes"
-        width="390"
-        height="390"
+        width="780"
+        height="780"
         loading="lazy"
         decoding="async"
         initial={{ opacity: 0, scale: 0.86, x: 140, y: -60, rotate: -8 }}
