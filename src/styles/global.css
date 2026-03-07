@@ -376,6 +376,26 @@ img {
     gap: 10px;
     margin-bottom: 34px;
   }
+
+  .share-buttons {
+    gap: 8px;
+  }
+
+  .share-buttons a {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+@media screen and (max-width: 360px) {
+  .hero-cv-buttons {
+    width: 100%;
+  }
+
+  .hero-cv-button {
+    width: 100%;
+    padding-inline: 14px;
+  }
 }
 
 @media (pointer: coarse) {
