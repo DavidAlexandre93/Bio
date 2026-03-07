@@ -92,6 +92,10 @@ img {
   height: 128px;
   width: 128px;
   border-radius: 50%;
+  overflow: hidden;
+  object-fit: cover;
+  object-position: center;
+  display: block;
   margin-bottom: 0;
   border: 2px solid rgba(188, 167, 255, 0.42);
   box-shadow: 0 0 0 rgba(146, 61, 255, 0.6);
@@ -398,11 +402,14 @@ img {
   .profile {
     width: 104px;
     height: 104px;
-    margin-left: -48px;
+    margin-left: 0;
+    transform: translateX(-100px);
+    object-position: 30% center;
   }
 
   .hero-profile-scene {
     margin-bottom: 18px;
+    transform: none;
   }
 
   .hero-profile-scene::after {
