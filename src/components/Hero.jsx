@@ -33,6 +33,10 @@ export function Hero({ profile }) {
     trackEvent('cv_click', { language });
   };
 
+  const trackGraduationClick = () => {
+    trackEvent('graduation_click', { source: 'hero_beca' });
+  };
+
   return (
     <motion.header className="hero" variants={heroContainer} initial="hidden" animate="show">
       <motion.div className="hero-profile-scene" variants={heroItem}>
@@ -83,45 +87,82 @@ export function Hero({ profile }) {
       <motion.p className="hero-role" variants={heroItem}>
         {profile.role}
       </motion.p>
-      <motion.div className="hero-cv-buttons" variants={heroItem}>
+      <motion.div className="hero-cv-area" variants={heroItem}>
+        <motion.div className="hero-cv-buttons">
+          <motion.a
+            className="hero-cv-button"
+            href="https://1drv.ms/b/c/6d3c8bf67ab3908f/IQB4BlME7x0MTKdPgaCIauKZAbDHyPcUo3Sa_N_wi_NHw-A?e=8XDvg1"
+            rel="noopener noreferrer"
+            target="_blank"
+            aria-label="Abrir currículo em português"
+            onClick={() => trackCvClick('pt-br')}
+            whileHover={{ scale: 1.04, y: -2 }}
+            whileTap={{ scale: 0.98 }}
+            transition={{ type: 'spring', stiffness: 320, damping: 20 }}
+          >
+            Currículo PT-BR
+          </motion.a>
+          <motion.a
+            className="hero-cv-button hero-cv-button-en"
+            href="https://1drv.ms/b/c/6d3c8bf67ab3908f/IQDuTGvXj2XCTL3nOTJtGrHsAccROLJ3L75CSILAurRzMvA?e=OKdejw"
+            rel="noopener noreferrer"
+            target="_blank"
+            aria-label="Open resume in English"
+            onClick={() => trackCvClick('en')}
+            whileHover={{ scale: 1.04, y: -2 }}
+            whileTap={{ scale: 0.98 }}
+            transition={{ type: 'spring', stiffness: 320, damping: 20 }}
+          >
+            Currículo EN
+          </motion.a>
+          <motion.a
+            className="hero-cv-button hero-cv-button-fr"
+            href="https://1drv.ms/b/c/6d3c8bf67ab3908f/IQCFLi5sKsRdRL7CDZ3VOwhhAfUAgHIatijDXaNkj7X19gQ?e=peVD5l"
+            rel="noopener noreferrer"
+            target="_blank"
+            aria-label="Ouvrir le CV en français"
+            onClick={() => trackCvClick('fr')}
+            whileHover={{ scale: 1.04, y: -2 }}
+            whileTap={{ scale: 0.98 }}
+            transition={{ type: 'spring', stiffness: 320, damping: 20 }}
+          >
+            Currículo FR
+          </motion.a>
+        </motion.div>
+
         <motion.a
-          className="hero-cv-button"
-          href="https://1drv.ms/b/c/6d3c8bf67ab3908f/IQB4BlME7x0MTKdPgaCIauKZAbDHyPcUo3Sa_N_wi_NHw-A?e=8XDvg1"
-          rel="noopener noreferrer"
+          className="hero-beca-link"
+          href="https://davidalexandre93.github.io/formacao/"
           target="_blank"
-          aria-label="Abrir currículo em português"
-          onClick={() => trackCvClick('pt-br')}
-          whileHover={{ scale: 1.04, y: -2 }}
-          whileTap={{ scale: 0.98 }}
-          transition={{ type: 'spring', stiffness: 320, damping: 20 }}
-        >
-          Currículo PT-BR
-        </motion.a>
-        <motion.a
-          className="hero-cv-button hero-cv-button-en"
-          href="https://1drv.ms/b/c/6d3c8bf67ab3908f/IQDuTGvXj2XCTL3nOTJtGrHsAccROLJ3L75CSILAurRzMvA?e=OKdejw"
           rel="noopener noreferrer"
-          target="_blank"
-          aria-label="Open resume in English"
-          onClick={() => trackCvClick('en')}
-          whileHover={{ scale: 1.04, y: -2 }}
-          whileTap={{ scale: 0.98 }}
-          transition={{ type: 'spring', stiffness: 320, damping: 20 }}
+          aria-label="Abrir página de formação"
+          onClick={trackGraduationClick}
+          initial={{ opacity: 0, y: 20, scale: 0.75, rotate: -14 }}
+          animate={{
+            opacity: 1,
+            y: [18, -14, 8, -10, 18],
+            x: [0, -3, 3, -2, 0],
+            scale: [1, 1.08, 1, 1.06, 1],
+            rotate: [-10, 7, -6, 5, -10]
+          }}
+          transition={{
+            opacity: { duration: 0.55, delay: 0.4 },
+            y: { duration: 1.8, repeat: Infinity, ease: 'easeInOut' },
+            x: { duration: 1.6, repeat: Infinity, ease: 'easeInOut' },
+            scale: { duration: 1.8, repeat: Infinity, ease: 'easeInOut' },
+            rotate: { duration: 1.8, repeat: Infinity, ease: 'easeInOut' }
+          }}
+          whileHover={{ scale: 1.16, rotate: [0, -10, 10, -8, 0], y: -4 }}
+          whileTap={{ scale: 0.95 }}
         >
-          Currículo EN
-        </motion.a>
-        <motion.a
-          className="hero-cv-button hero-cv-button-fr"
-          href="https://1drv.ms/b/c/6d3c8bf67ab3908f/IQCFLi5sKsRdRL7CDZ3VOwhhAfUAgHIatijDXaNkj7X19gQ?e=peVD5l"
-          rel="noopener noreferrer"
-          target="_blank"
-          aria-label="Ouvrir le CV en français"
-          onClick={() => trackCvClick('fr')}
-          whileHover={{ scale: 1.04, y: -2 }}
-          whileTap={{ scale: 0.98 }}
-          transition={{ type: 'spring', stiffness: 320, damping: 20 }}
-        >
-          Currículo FR
+          <img
+            src="/assets/image/beca.svg"
+            alt="Beca flutuando para acessar a página de formação"
+            width="94"
+            height="94"
+            loading="lazy"
+            decoding="async"
+          />
         </motion.a>
       </motion.div>
     </motion.header>
