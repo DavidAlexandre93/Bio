@@ -47,33 +47,33 @@ export function Hero({ profile }) {
           whileHover={{ scale: 1.06, rotate: [0, -3, 3, 0] }}
           transition={{ duration: 0.45, ease: 'easeOut' }}
         />
-
-        <motion.img
-          className="hero-scratt"
-          src="/assets/image/scratt.svg"
-          alt="Scratt curioso observando a foto de perfil"
-          width="360"
-          height="360"
-          loading="lazy"
-          decoding="async"
-          initial={{ opacity: 0, scale: 0.82, x: 72, y: -54, rotate: -8 }}
-          animate={{
-            opacity: 0.96,
-            scale: 1,
-            x: [72, 88, 72],
-            y: [-54, -64, -54],
-            rotate: [-8, -4, -8]
-          }}
-          transition={{
-            opacity: { duration: 0.7, ease: 'easeOut', delay: 0.45 },
-            scale: { duration: 0.7, ease: 'easeOut', delay: 0.45 },
-            x: { duration: 3.4, repeat: Infinity, ease: 'easeInOut' },
-            y: { duration: 2.8, repeat: Infinity, ease: 'easeInOut' },
-            rotate: { duration: 2.8, repeat: Infinity, ease: 'easeInOut' }
-          }}
-          whileHover={{ scale: 1.04, rotate: -2, x: 94 }}
-        />
       </motion.div>
+
+      <motion.img
+        className="hero-scratt"
+        src="/assets/image/scratt.svg"
+        alt="Scratt gigante atrás do nome Fernandes"
+        width="390"
+        height="390"
+        loading="lazy"
+        decoding="async"
+        initial={{ opacity: 0, scale: 0.86, x: 140, y: -60, rotate: -8 }}
+        animate={{
+          opacity: 0.92,
+          scale: 1,
+          x: [140, 154, 140],
+          y: [-60, -70, -60],
+          rotate: [-8, -5, -8]
+        }}
+        transition={{
+          opacity: { duration: 0.7, ease: 'easeOut', delay: 0.45 },
+          scale: { duration: 0.7, ease: 'easeOut', delay: 0.45 },
+          x: { duration: 3.6, repeat: Infinity, ease: 'easeInOut' },
+          y: { duration: 2.9, repeat: Infinity, ease: 'easeInOut' },
+          rotate: { duration: 2.9, repeat: Infinity, ease: 'easeInOut' }
+        }}
+      />
+
       <motion.h1 className="hero-title" variants={heroItem}>
         {profile.name}
       </motion.h1>

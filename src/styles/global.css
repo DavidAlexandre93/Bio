@@ -80,12 +80,12 @@ img {
   margin-bottom: clamp(3.2rem, 6vw, 6.4rem);
   padding-inline: clamp(0.2rem, 2vw, 1.4rem);
   text-align: center;
+  position: relative;
 }
 
 .hero-profile-scene {
   position: relative;
   margin-bottom: 24px;
-  isolation: isolate;
 }
 
 .profile {
@@ -115,17 +115,19 @@ img {
 
 .hero-scratt {
   position: absolute;
-  right: clamp(-210px, -15vw, -138px);
-  top: clamp(-136px, -10vw, -72px);
+  right: clamp(-170px, -10vw, -90px);
+  top: clamp(74px, 16vw, 128px);
   z-index: 1;
-  width: clamp(260px, 34vw, 420px);
+  width: clamp(280px, 36vw, 460px);
   max-width: none;
-  opacity: 0.94;
+  opacity: 0.9;
   pointer-events: none;
   filter: drop-shadow(0 18px 28px rgba(0, 0, 0, 0.45));
 }
 
 .hero-title {
+  position: relative;
+  z-index: 3;
   font-size: clamp(3rem, 7vw, 4.8rem);
   font-weight: 500;
 }
@@ -400,9 +402,9 @@ img {
   }
 
   .hero-scratt {
-    right: -120px;
-    top: -80px;
-    width: clamp(210px, 64vw, 300px);
+    right: -96px;
+    top: 118px;
+    width: clamp(220px, 68vw, 320px);
   }
 
   .link-card {
