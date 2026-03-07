@@ -410,9 +410,9 @@ img {
   }
 
   .hero-scratt {
-    right: 50%;
+    right: clamp(110px, 26vw, 150px);
     top: 96px;
-    transform: translateX(50%);
+    transform: none;
     width: min(92vw, 420px);
     opacity: 0.62;
   }
@@ -452,6 +452,7 @@ img {
 
 @media screen and (max-width: 360px) {
   .hero-scratt {
+    right: clamp(80px, 20vw, 120px);
     top: 108px;
     width: min(96vw, 360px);
   }
