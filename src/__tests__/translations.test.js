@@ -59,6 +59,6 @@ test('getLocalizedData creates complete frontend cards', () => {
   const data = getLocalizedData(translations);
 
   assert.equal(data.profile.role, 'Engenheiro de software');
-  assert.equal(data.highlightedProjects.length, 3);
+  assert.equal(data.highlightedProjects.length, 2);
   assert.equal(data.socialLinks.length, 5);
 });

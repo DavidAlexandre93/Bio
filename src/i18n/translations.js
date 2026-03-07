@@ -11,7 +11,7 @@ const translations = {
   'en-US': {
     profileRole: 'Software engineer',
     featuredTitle: 'Featured projects',
-    featuredDescription: 'Choose the experience you want to explore first: business website, full portfolio, or personal hub.',
+    featuredDescription: 'Choose the experience you want to explore first: business website or full portfolio.',
     socialTitle: 'Contact & Professional Networks',
     socialDescription: 'Open channels by intent: networking, community, code, deployments, or direct contact.',
     supportTitle: 'Leave a ⭐️ if GitHub projects helped you!',
@@ -33,7 +33,7 @@ const translations = {
   'pt-BR': {
     profileRole: 'Engenheiro de software',
     featuredTitle: 'Projetos em destaque',
-    featuredDescription: 'Selecione a experiência que quer explorar primeiro: institucional, portfólio completo ou hub pessoal.',
+    featuredDescription: 'Selecione a experiência que quer explorar primeiro: institucional ou portfólio completo.',
     socialTitle: 'Contato e Redes Profissionais',
     socialDescription: 'Acesse os canais por intenção: networking, comunidade, código, deploys ou contato direto.',
     supportTitle: 'Deixe uma ⭐️ se os projetos no GitHub te ajudaram!',
@@ -55,7 +55,7 @@ const translations = {
   'fr-FR': {
     profileRole: 'Ingénieur logiciel',
     featuredTitle: 'Projets en vedette',
-    featuredDescription: 'Choisissez l’expérience à explorer en premier : site institutionnel, portfolio complet ou hub personnel.',
+    featuredDescription: 'Choisissez l’expérience à explorer en premier : site institutionnel ou portfolio complet.',
     socialTitle: 'Contact et réseaux professionnels',
     socialDescription: 'Accédez aux canaux selon l’intention : networking, communauté, code, déploiements ou contact direct.',
     supportTitle: 'Laissez une ⭐️ si les projets GitHub vous ont aidé !',
@@ -77,7 +77,7 @@ const translations = {
   'ja-JP': {
     profileRole: 'ソフトウェアエンジニア',
     featuredTitle: '注目プロジェクト',
-    featuredDescription: '最初に見たい体験を選択してください：企業サイト、フルポートフォリオ、または個人ハブ。',
+    featuredDescription: '最初に見たい体験を選択してください：企業サイトまたはフルポートフォリオ。',
     socialTitle: '連絡先とプロフェッショナルネットワーク',
     socialDescription: '目的ごとにチャンネルへアクセス：ネットワーキング、コミュニティ、コード、デプロイ、または直接連絡。',
     supportTitle: 'GitHub のプロジェクトが役立ったら ⭐️ をお願いします！',
