@@ -29,12 +29,23 @@ function App() {
   const translations = useMemo(() => getTranslations(language), [language]);
   const { profile, highlightedProjects, socialLinks } = useMemo(() => getLocalizedData(translations), [translations]);
   const [referralCode, setReferralCode] = useState('');
+  const [isBooting, setIsBooting] = useState(true);
 
   useSeoMeta({ language, profile });
 
   useEffect(() => {
     document.documentElement.lang = language;
   }, [language]);
+
+  useEffect(() => {
+    const bootTimeout = window.setTimeout(() => {
+      setIsBooting(false);
+    }, 950);
+
+    return () => {
+      window.clearTimeout(bootTimeout);
+    };
+  }, []);
 
   useEffect(() => {
     const url = new URL(window.location.href);
@@ -52,8 +63,14 @@ function App() {
 
   return (
     <>
+      <div className="scroll-progress" aria-hidden="true" />
       <div className="scene-glow" aria-hidden="true" />
       <div className="scene-grid" aria-hidden="true" />
+      <div className={`app-loader ${isBooting ? '' : 'app-loader-hidden'}`} aria-hidden={!isBooting}>
+        <div className="app-loader-orb">
+          <span />
+        </div>
+      </div>
       {referralCode ? <p className="ref-banner">Referral ativo: {referralCode}</p> : null}
       <Hero profile={profile} />
 
