@@ -77,7 +77,7 @@ img {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  margin-bottom: clamp(3.2rem, 6vw, 6.4rem);
+  margin-bottom: clamp(0.4rem, 1.2vw, 1.2rem);
   padding-inline: clamp(0.2rem, 2vw, 1.4rem);
   text-align: center;
   position: relative;
@@ -159,7 +159,7 @@ img {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-height: 50px;
+  min-height: 46px;
   padding: 0 24px;
   border-radius: 999px;
   border: 1px solid rgba(255, 255, 255, 0.56);
@@ -209,7 +209,7 @@ img {
 
 .hero-beca-link {
   position: relative;
-  margin-top: clamp(52px, 8vw, 110px);
+  margin-top: clamp(10px, 2.2vw, 20px);
   display: inline-flex;
   align-items: center;
   justify-content: center;
