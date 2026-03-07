@@ -8,6 +8,8 @@
 html {
   scroll-behavior: smooth;
   font-size: 62.5%;
+  overflow-x: hidden;
+  overscroll-behavior: none;
 }
 
 body {
@@ -17,6 +19,8 @@ body {
   color: #fafafa;
   min-height: 100vh;
   overflow-x: hidden;
+  overscroll-behavior: none;
+  touch-action: pan-y;
 }
 
 #root {
