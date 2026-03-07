@@ -1,30 +1,25 @@
 import { useEffect, useState } from 'react';
-import { DEFAULT_LANGUAGE, getLanguageFromCountry, normalizeLanguage } from '../i18n/translations';
+import { DEFAULT_LANGUAGE } from '../i18n/translations.js';
+import { pickLanguageFromApi, pickLanguageFromBrowser } from '../i18n/languageDetection.js';
 
 const GEOLOCATION_ENDPOINT = 'https://ipapi.co/json/';
-
-function pickLanguageFromApi(data) {
-  const mappedLanguage = getLanguageFromCountry(data?.country_code);
-
-  if (mappedLanguage) {
-    return mappedLanguage;
-  }
-
-  const firstLanguage = data?.languages?.split(',')?.[0];
-  return firstLanguage ? normalizeLanguage(firstLanguage) : null;
-}
+const GEOLOCATION_TIMEOUT_MS = 2500;
 
 export function useGeolocatedLanguage() {
   const [language, setLanguage] = useState(DEFAULT_LANGUAGE);
 
   useEffect(() => {
-    const browserLanguage = normalizeLanguage(navigator.language);
+    const browserLanguage = pickLanguageFromBrowser(navigator.language, navigator.languages || []);
     setLanguage(browserLanguage);
 
     async function detectCountryLanguage() {
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), GEOLOCATION_TIMEOUT_MS);
+
       try {
         const response = await fetch(GEOLOCATION_ENDPOINT, {
-          headers: { Accept: 'application/json' }
+          headers: { Accept: 'application/json' },
+          signal: controller.signal
         });
 
         if (!response.ok) {
@@ -39,6 +34,8 @@ export function useGeolocatedLanguage() {
         }
       } catch {
         // Fallback keeps browser language.
+      } finally {
+        clearTimeout(timeoutId);
       }
     }
 
