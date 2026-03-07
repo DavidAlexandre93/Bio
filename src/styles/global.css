@@ -115,10 +115,10 @@ img {
 
 .hero-scratt {
   position: absolute;
-  right: clamp(-170px, -10vw, -90px);
-  top: clamp(74px, 16vw, 128px);
+  right: clamp(-360px, -23vw, -220px);
+  top: clamp(18px, 8vw, 80px);
   z-index: 1;
-  width: clamp(280px, 36vw, 460px);
+  width: clamp(560px, 72vw, 920px);
   max-width: none;
   opacity: 0.9;
   pointer-events: none;
@@ -402,9 +402,9 @@ img {
   }
 
   .hero-scratt {
-    right: -96px;
-    top: 118px;
-    width: clamp(220px, 68vw, 320px);
+    right: -168px;
+    top: 84px;
+    width: clamp(380px, 118vw, 560px);
   }
 
   .link-card {
