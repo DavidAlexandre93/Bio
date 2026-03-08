@@ -66,6 +66,8 @@ export function useSeoMeta({ language, profile }) {
     upsertMeta('meta[name="twitter:image"]', { name: 'twitter:image', content: OG_IMAGE });
 
     upsertLink('link[rel="canonical"]', { rel: 'canonical', href: canonical });
+    upsertLink('link[rel="icon"]', { rel: 'icon', href: profile.image, type: 'image/png' });
+    upsertLink('link[rel="shortcut icon"]', { rel: 'shortcut icon', href: profile.image, type: 'image/png' });
 
     const jsonLd = {
       '@context': 'https://schema.org',
