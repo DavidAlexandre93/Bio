@@ -117,7 +117,7 @@ export function Hero({ profile }) {
           </motion.a>
           <motion.a
             className="hero-cv-button hero-cv-button-fr"
-            href="https://1drv.ms/b/c/6d3c8bf67ab3908f/IQCFLi5sKsRdRL7CDZ3VOwhhAfUAgHIatijDXaNkj7X19gQ?e=peVD5l"
+            href="https://1drv.ms/w/c/6d3c8bf67ab3908f/IQAKwPNYyWg4SoM7acHrPpxxARW0XhLTP1ItaSOelsq1JD4?e=EFDOFD"
             rel="noopener noreferrer"
             target="_blank"
             aria-label="Ouvrir le CV en français"
