@@ -89,19 +89,23 @@ export function Hero({ profile }) {
       </motion.p>
       <motion.div className="hero-cv-area" variants={heroItem}>
         <motion.div className="hero-cv-buttons">
-          <motion.a
+          <motion.div
             className="hero-cv-button"
-            href="https://1drv.ms/b/c/6d3c8bf67ab3908f/IQB4BlME7x0MTKdPgaCIauKZAbDHyPcUo3Sa_N_wi_NHw-A?e=8XDvg1"
-            rel="noopener noreferrer"
-            target="_blank"
-            aria-label="Abrir currículo em português"
-            onClick={() => trackCvClick('pt-br')}
-            whileHover={{ scale: 1.04, y: -2 }}
-            whileTap={{ scale: 0.98 }}
+            aria-label="Visualizador do currículo em português"
+            whileHover={{ scale: 1.01, y: -2 }}
             transition={{ type: 'spring', stiffness: 320, damping: 20 }}
           >
-            Currículo PT-BR
-          </motion.a>
+            <iframe
+              src="https://1drv.ms/f/c/6d3c8bf67ab3908f/UgSPkLN69os8IIBt5BkAAAAAAPrWOFIdTcM1Gl0?em=2"
+              width="476px"
+              height="288px"
+              frameBorder="0"
+              title="Visualizador do PowerPoint"
+            >
+              Este é um documento do <a target="_blank" href="https://office.com" rel="noreferrer">Microsoft Office</a> incorporado, da plataforma{' '}
+              <a target="_blank" href="https://office.com/webapps" rel="noreferrer">Office</a>.
+            </iframe>
+          </motion.div>
           <motion.a
             className="hero-cv-button hero-cv-button-en"
             href="https://1drv.ms/b/c/6d3c8bf67ab3908f/IQDuTGvXj2XCTL3nOTJtGrHsAccROLJ3L75CSILAurRzMvA?e=OKdejw"
