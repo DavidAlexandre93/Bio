@@ -117,7 +117,7 @@ export function Hero({ profile }) {
           </motion.a>
           <motion.a
             className="hero-cv-button hero-cv-button-fr"
-            href="https://1drv.ms/w/c/6d3c8bf67ab3908f/IQAKwPNYyWg4SoM7acHrPpxxARW0XhLTP1ItaSOelsq1JD4?e=EFDOFD"
+            href="https://davidalexandre93.github.io/resume/FR/"
             rel="noopener noreferrer"
             target="_blank"
             aria-label="Ouvrir le CV en français"
