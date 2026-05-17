@@ -115,19 +115,6 @@ export function Hero({ profile }) {
           >
             Currículo EN
           </motion.a>
-          <motion.a
-            className="hero-cv-button hero-cv-button-fr"
-            href="https://davidalexandre93.github.io/resume/FR/"
-            rel="noopener noreferrer"
-            target="_blank"
-            aria-label="Ouvrir le CV en français"
-            onClick={() => trackCvClick('fr')}
-            whileHover={{ scale: 1.04, y: -2 }}
-            whileTap={{ scale: 0.98 }}
-            transition={{ type: 'spring', stiffness: 320, damping: 20 }}
-          >
-            Currículo FR
-          </motion.a>
         </motion.div>
 
         <motion.a
