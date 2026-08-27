@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 
 const SITE_URL = 'https://bio-portfolio.vercel.app';
-const OG_IMAGE = `${SITE_URL}/assets/image/preview.png`;
+const OG_IMAGE = `${SITE_URL}/assets/image/perfil-social.jpeg`;
 
 function upsertMeta(selector, attributes) {
   let element = document.head.querySelector(selector);
@@ -39,42 +39,65 @@ export function useSeoMeta({ language, profile }) {
     };
 
     const descriptionByLanguage = {
-      'pt-BR': 'Hub oficial com portfólio, links profissionais, currículos e canais de contato do David Alexandre Fernandes.',
-      'en-US': 'Official hub with portfolio, professional links, resumes, and contact channels from David Alexandre Fernandes.',
-      'fr-FR': 'Hub officiel avec portfolio, liens professionnels, CV et canaux de contact de David Alexandre Fernandes.',
-      'ja-JP': 'David Alexandre Fernandes の公式ハブ。ポートフォリオ、プロフェッショナルリンク、履歴書、連絡先を掲載。'
+      'pt-BR':
+        'Hub oficial com portfólio, links profissionais, currículos e canais de contato do David Alexandre Fernandes.',
+      'en-US':
+        'Official hub with portfolio, professional links, resumes, and contact channels from David Alexandre Fernandes.',
+      'fr-FR':
+        'Hub officiel avec portfolio, liens professionnels, CV et canaux de contact de David Alexandre Fernandes.',
+      'ja-JP':
+        'David Alexandre Fernandes の公式ハブ。ポートフォリオ、プロフェッショナルリンク、履歴書、連絡先を掲載。'
     };
 
     const title = titleByLanguage[language] || titleByLanguage['en-US'];
     const description = descriptionByLanguage[language] || descriptionByLanguage['en-US'];
     const canonical = `${SITE_URL}/`;
+    const profileImage = profile.image.startsWith('http')
+      ? profile.image
+      : `${SITE_URL}${profile.image}`;
 
     document.title = title;
 
     upsertMeta('meta[name="description"]', { name: 'description', content: description });
-    upsertMeta('meta[name="robots"]', { name: 'robots', content: 'index,follow,max-image-preview:large' });
+    upsertMeta('meta[name="robots"]', {
+      name: 'robots',
+      content: 'index,follow,max-image-preview:large'
+    });
 
     upsertMeta('meta[property="og:type"]', { property: 'og:type', content: 'website' });
     upsertMeta('meta[property="og:title"]', { property: 'og:title', content: title });
-    upsertMeta('meta[property="og:description"]', { property: 'og:description', content: description });
+    upsertMeta('meta[property="og:description"]', {
+      property: 'og:description',
+      content: description
+    });
     upsertMeta('meta[property="og:url"]', { property: 'og:url', content: canonical });
     upsertMeta('meta[property="og:image"]', { property: 'og:image', content: OG_IMAGE });
 
-    upsertMeta('meta[name="twitter:card"]', { name: 'twitter:card', content: 'summary_large_image' });
+    upsertMeta('meta[name="twitter:card"]', {
+      name: 'twitter:card',
+      content: 'summary_large_image'
+    });
     upsertMeta('meta[name="twitter:title"]', { name: 'twitter:title', content: title });
-    upsertMeta('meta[name="twitter:description"]', { name: 'twitter:description', content: description });
+    upsertMeta('meta[name="twitter:description"]', {
+      name: 'twitter:description',
+      content: description
+    });
     upsertMeta('meta[name="twitter:image"]', { name: 'twitter:image', content: OG_IMAGE });
 
     upsertLink('link[rel="canonical"]', { rel: 'canonical', href: canonical });
     upsertLink('link[rel="icon"]', { rel: 'icon', href: profile.image, type: 'image/png' });
-    upsertLink('link[rel="shortcut icon"]', { rel: 'shortcut icon', href: profile.image, type: 'image/png' });
+    upsertLink('link[rel="shortcut icon"]', {
+      rel: 'shortcut icon',
+      href: profile.image,
+      type: 'image/png'
+    });
 
     const jsonLd = {
       '@context': 'https://schema.org',
       '@type': 'Person',
       name: profile.name,
       url: SITE_URL,
-      image: profile.image,
+      image: profileImage,
       jobTitle: profile.role,
       sameAs: [
         'https://github.com/DavidAlexandre93',

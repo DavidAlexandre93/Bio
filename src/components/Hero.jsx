@@ -2,168 +2,128 @@ import { motion } from 'motion/react';
 import { trackEvent } from '../utils/analytics';
 
 const heroContainer = {
-  hidden: { opacity: 0, y: 24 },
+  hidden: { opacity: 0 },
   show: {
     opacity: 1,
-    y: 0,
-    transition: {
-      type: 'spring',
-      stiffness: 80,
-      damping: 14,
-      staggerChildren: 0.14
-    }
+    transition: { staggerChildren: 0.1, delayChildren: 0.08 }
   }
 };
 
 const heroItem = {
-  hidden: { opacity: 0, y: 18, filter: 'blur(8px)' },
+  hidden: { opacity: 0, y: 22, filter: 'blur(8px)' },
   show: {
     opacity: 1,
     y: 0,
     filter: 'blur(0px)',
-    transition: {
-      duration: 0.65,
-      ease: 'easeOut'
-    }
+    transition: { duration: 0.62, ease: [0.22, 1, 0.36, 1] }
   }
 };
 
-export function Hero({ profile }) {
+const resumeLinks = [
+  {
+    label: 'Currículo PT-BR',
+    shortLabel: 'PT-BR',
+    href: '/assets/curriculos/curriculo-david-alexandre-fernandes-pt-br.pdf',
+    language: 'pt-br'
+  },
+  {
+    label: 'Currículo EUR',
+    shortLabel: 'EUR',
+    href: '/assets/curriculos/resume-david-alexandre-fernandes-eur.pdf',
+    language: 'eur'
+  },
+  {
+    label: 'Currículo EN',
+    shortLabel: 'EN',
+    href: '/assets/curriculos/resume-david-alexandre-fernandes-en.pdf',
+    language: 'en'
+  }
+];
+
+export function Hero({ profile, labels }) {
   const trackCvClick = (language) => {
     trackEvent('cv_click', { language });
   };
 
-  const trackGraduationClick = () => {
-    trackEvent('graduation_click', { source: 'hero_beca' });
-  };
-
   return (
-    <motion.header className="hero" variants={heroContainer} initial="hidden" animate="show">
-      <motion.div className="hero-profile-scene" variants={heroItem}>
-        <motion.img
-          className="profile"
-          src={profile.image}
-          alt={profile.imageAlt}
-          width="125"
-          height="125"
-          loading="eager"
-          decoding="async"
-          whileHover={{ scale: 1.06, rotate: [0, -3, 3, 0] }}
-          transition={{ duration: 0.45, ease: 'easeOut' }}
-        />
-      </motion.div>
-
-      <motion.img
-        className="hero-scratt"
-        src="/assets/image/scratt.svg"
-        alt="Scratt gigante atrás do nome Fernandes"
-        width="780"
-        height="780"
-        loading="lazy"
-        decoding="async"
-        initial={{ opacity: 0, scale: 0.86, x: 140, y: -60, rotate: -8 }}
-        animate={{
-          opacity: 0.92,
-          scale: 1,
-          x: [140, 154, 140],
-          y: [-60, -70, -60],
-          rotate: [-8, -5, -8]
-        }}
-        transition={{
-          opacity: { duration: 0.7, ease: 'easeOut', delay: 0.45 },
-          scale: { duration: 0.7, ease: 'easeOut', delay: 0.45 },
-          x: { duration: 3.6, repeat: Infinity, ease: 'easeInOut' },
-          y: { duration: 2.9, repeat: Infinity, ease: 'easeInOut' },
-          rotate: { duration: 2.9, repeat: Infinity, ease: 'easeInOut' }
-        }}
-      />
-
-      <motion.h1 className="hero-title" variants={heroItem}>
-        {profile.name}
-      </motion.h1>
-      <motion.p className="hero-tag" variants={heroItem}>
-        {profile.tag}
-      </motion.p>
-      <motion.p className="hero-role" variants={heroItem}>
-        {profile.role}
-      </motion.p>
-      <motion.div className="hero-cv-area" variants={heroItem}>
-        <motion.div className="hero-cv-buttons">
-          <motion.a
-            className="hero-cv-button"
-            href="https://1drv.ms/b/c/6d3c8bf67ab3908f/IQB4BlME7x0MTKdPgaCIauKZAbDHyPcUo3Sa_N_wi_NHw-A?e=8XDvg1"
-            rel="noopener noreferrer"
-            target="_blank"
-            aria-label="Abrir currículo em português"
-            onClick={() => trackCvClick('pt-br')}
-            whileHover={{ scale: 1.04, y: -2 }}
-            whileTap={{ scale: 0.98 }}
-            transition={{ type: 'spring', stiffness: 320, damping: 20 }}
-          >
-            Currículo PT-BR
-          </motion.a>
-          <motion.a
-            className="hero-cv-button hero-cv-button-en"
-            href="https://1drv.ms/b/c/6d3c8bf67ab3908f/IQDuTGvXj2XCTL3nOTJtGrHsAccROLJ3L75CSILAurRzMvA?e=OKdejw"
-            rel="noopener noreferrer"
-            target="_blank"
-            aria-label="Open resume in English"
-            onClick={() => trackCvClick('en')}
-            whileHover={{ scale: 1.04, y: -2 }}
-            whileTap={{ scale: 0.98 }}
-            transition={{ type: 'spring', stiffness: 320, damping: 20 }}
-          >
-            Currículo EN
-          </motion.a>
-          <motion.a
-            className="hero-cv-button hero-cv-button-fr"
-            href="https://1drv.ms/b/c/6d3c8bf67ab3908f/IQCFLi5sKsRdRL7CDZ3VOwhhAfUAgHIatijDXaNkj7X19gQ?e=peVD5l"
-            rel="noopener noreferrer"
-            target="_blank"
-            aria-label="Ouvrir le CV en français"
-            onClick={() => trackCvClick('fr')}
-            whileHover={{ scale: 1.04, y: -2 }}
-            whileTap={{ scale: 0.98 }}
-            transition={{ type: 'spring', stiffness: 320, damping: 20 }}
-          >
-            Currículo FR
-          </motion.a>
+    <motion.header
+      className="hero"
+      id="top"
+      variants={heroContainer}
+      initial="hidden"
+      animate="show"
+    >
+      <div className="hero-copy">
+        <motion.div className="availability-pill" variants={heroItem}>
+          <span aria-hidden="true" />
+          {labels.available}
         </motion.div>
 
-        <motion.a
-          className="hero-beca-link"
-          href="https://davidalexandre93.github.io/formacao/"
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="Abrir página de formação"
-          onClick={trackGraduationClick}
-          initial={{ opacity: 0, y: 20, scale: 0.75, rotate: -14 }}
-          animate={{
-            opacity: 1,
-            y: [18, -14, 8, -10, 18],
-            x: [0, -3, 3, -2, 0],
-            scale: [1, 1.08, 1, 1.06, 1],
-            rotate: [-10, 7, -6, 5, -10]
-          }}
-          transition={{
-            opacity: { duration: 0.55, delay: 0.4 },
-            y: { duration: 1.8, repeat: Infinity, ease: 'easeInOut' },
-            x: { duration: 1.6, repeat: Infinity, ease: 'easeInOut' },
-            scale: { duration: 1.8, repeat: Infinity, ease: 'easeInOut' },
-            rotate: { duration: 1.8, repeat: Infinity, ease: 'easeInOut' }
-          }}
-          whileHover={{ scale: 1.16, rotate: [0, -10, 10, -8, 0], y: -4 }}
-          whileTap={{ scale: 0.95 }}
-        >
+        <motion.p className="hero-eyebrow" variants={heroItem}>
+          {labels.heroEyebrow}
+        </motion.p>
+        <motion.h1 variants={heroItem}>
+          David Alexandre
+          <span>Fernandes.</span>
+        </motion.h1>
+        <motion.p className="hero-role" variants={heroItem}>
+          {profile.role}
+        </motion.p>
+        <motion.p className="hero-intro" variants={heroItem}>
+          {labels.heroIntroduction}
+        </motion.p>
+
+        <motion.div className="hero-cv-area" variants={heroItem}>
+          <p className="hero-cv-label">{labels.resumeHeading}</p>
+          <div className="hero-cv-buttons">
+            {resumeLinks.map((resume) => (
+              <motion.a
+                className="hero-cv-button"
+                href={resume.href}
+                rel="noopener noreferrer"
+                target="_blank"
+                aria-label={`${labels.openResumeLabel} ${resume.shortLabel}`}
+                onClick={() => trackCvClick(resume.language)}
+                whileHover={{ y: -3 }}
+                whileTap={{ scale: 0.98 }}
+                transition={{ duration: 0.2 }}
+                key={resume.language}
+              >
+                <svg className="resume-icon" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M7 3h7l4 4v14H7zM14 3v5h5M10 13h5M10 17h5" />
+                </svg>
+                <span>{resume.label}</span>
+                <svg className="resume-arrow" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M7 17 17 7M9 7h8v8" />
+                </svg>
+              </motion.a>
+            ))}
+          </div>
+        </motion.div>
+      </div>
+
+      <motion.div className="hero-visual" variants={heroItem}>
+        <div className="portrait-frame">
           <img
-            src="/assets/image/beca.svg"
-            alt="Beca flutuando para acessar a página de formação"
-            width="94"
-            height="94"
-            loading="lazy"
+            className="profile"
+            src={profile.image}
+            alt={profile.imageAlt}
+            width="640"
+            height="800"
+            loading="eager"
             decoding="async"
           />
-        </motion.a>
+          <div className="portrait-overlay" />
+        </div>
+        <div className="portrait-note portrait-note-top">
+          <span>DESIGN</span>
+          <span>CODE</span>
+          <span>IMPACT</span>
+        </div>
+        <div className="portrait-note portrait-note-bottom">
+          <small>{labels.basedIn}</small>
+          <strong>Brasil · 2026</strong>
+        </div>
       </motion.div>
     </motion.header>
   );

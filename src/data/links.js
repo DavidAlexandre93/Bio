@@ -4,16 +4,16 @@ export function getLocalizedData(translations) {
       name: 'David Alexandre Fernandes',
       tag: '@DavidAlexandre93',
       role: translations.profileRole,
-      image: 'https://avatars.githubusercontent.com/DavidAlexandre93',
-      imageAlt: 'Foto davidalexandre'
+      image: '/assets/image/perfil-social.jpeg',
+      imageAlt: 'Retrato profissional de David Alexandre Fernandes'
     },
     highlightedProjects: [
       {
         title: 'Website',
         description: translations.projects.websiteDescription,
         href: 'https://daf-web-site.vercel.app/',
-        icon: '/assets/icons/book.svg',
-        iconAlt: 'ícone livros',
+        icon: '/assets/icons/website.svg',
+        iconAlt: 'Ícone de website',
         accent: 'Landing',
         gradient: 'linear-gradient(90deg, #ada9c2 1%, #4e27d8 99%)'
       },
@@ -22,7 +22,7 @@ export function getLocalizedData(translations) {
         description: translations.projects.portfolioDescription,
         href: 'https://daf-portfolio.vercel.app/',
         icon: '/assets/icons/code.svg',
-        iconAlt: 'ícone feliz',
+        iconAlt: 'Ícone de código',
         accent: 'Case Study',
         gradient: 'linear-gradient(70deg, #afa9c9 1%, #8f61d8 99%)'
       }
@@ -32,8 +32,8 @@ export function getLocalizedData(translations) {
         title: 'Vercel',
         description: translations.projects.vercelDescription,
         href: 'https://www.vercel.com/davidalexandrefernandes',
-        icon: '/assets/icons/instagram.svg',
-        iconAlt: 'ícone instagram',
+        icon: '/assets/icons/vercel.svg',
+        iconAlt: 'Ícone da Vercel',
         accent: 'Deploy',
         gradient: 'linear-gradient(58deg, #a4a6ad 1%, #25292d 99%)'
       },
@@ -65,11 +65,11 @@ export function getLocalizedData(translations) {
         gradient: 'linear-gradient(58deg, #a5a7ae 1%, #283137 99%)'
       },
       {
-        title: 'E-mail',
+        title: 'Calendly',
         description: translations.projects.emailDescription,
         href: 'https://calendly.com/davidalexandrefernandes',
-        icon: '/assets/icons/email.svg',
-        iconAlt: 'ícone email',
+        icon: '/assets/icons/calendar.svg',
+        iconAlt: 'Ícone de calendário',
         accent: translations.projects.contactAccent,
         gradient: 'linear-gradient(58deg, #a8acc1 1%, #15289a 99%)'
       }

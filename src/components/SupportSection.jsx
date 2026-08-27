@@ -10,14 +10,17 @@ export function SupportSection({ title }) {
       viewport={{ once: true, amount: 0.5 }}
       transition={{ duration: 0.65, ease: 'easeOut' }}
     >
-      <motion.h2
-        initial={{ opacity: 0, y: 10 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.8 }}
-        transition={{ duration: 0.45, delay: 0.1 }}
-      >
-        {title}
-      </motion.h2>
+      <div>
+        <span className="support-kicker">OPEN SOURCE</span>
+        <motion.h2
+          initial={{ opacity: 0, y: 10 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.8 }}
+          transition={{ duration: 0.45, delay: 0.1 }}
+        >
+          {title}
+        </motion.h2>
+      </div>
       <motion.a
         className="support-link"
         href="https://www.buymeacoffee.com/davidfernandes"
@@ -27,12 +30,9 @@ export function SupportSection({ title }) {
         whileTap={{ scale: 0.97 }}
         transition={{ type: 'spring', stiffness: 330, damping: 18 }}
       >
-        <img
-          src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png"
-          height="50"
-          width="210"
-          alt="buymeacoffee.com/davidfernandes"
-        />
+        <span aria-hidden="true">☕</span>
+        Buy me a coffee
+        <span aria-hidden="true">↗</span>
       </motion.a>
     </motion.div>
   );

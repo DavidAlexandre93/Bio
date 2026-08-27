@@ -14,7 +14,17 @@ const cardVariants = {
   }
 };
 
-export function LinkCard({ title, description, accent, href, icon, iconAlt, gradient, sectionIndex = 0, cardIndex = 0 }) {
+export function LinkCard({
+  title,
+  description,
+  accent,
+  href,
+  icon,
+  iconAlt,
+  gradient,
+  sectionIndex = 0,
+  cardIndex = 0
+}) {
   return (
     <motion.a
       href={href}
@@ -28,7 +38,13 @@ export function LinkCard({ title, description, accent, href, icon, iconAlt, grad
       data-card-index={cardIndex}
       onClick={() => trackEvent('link_click', { title, sectionIndex, cardIndex, href })}
     >
-      <motion.article className="link-card" style={{ '--card-gradient': gradient }} whileHover="hover" initial="rest" animate="rest">
+      <motion.article
+        className="link-card"
+        style={{ '--card-gradient': gradient }}
+        whileHover="hover"
+        initial="rest"
+        animate="rest"
+      >
         <div className="link-card-icon-wrap">
           <motion.img
             src={icon}
@@ -59,6 +75,9 @@ export function LinkCard({ title, description, accent, href, icon, iconAlt, grad
         </div>
 
         <span className="link-card-accent">{accent}</span>
+        <span className="link-card-arrow" aria-hidden="true">
+          ↗
+        </span>
       </motion.article>
     </motion.a>
   );

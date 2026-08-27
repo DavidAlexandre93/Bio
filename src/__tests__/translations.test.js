@@ -50,7 +50,10 @@ test('geolocation prefers API language hints before country fallback', () => {
 test('getTranslations returns localized metadata', () => {
   const translations = getTranslations('en-US');
 
-  assert.equal(translations.featuredTitle, 'Featured projects');
+  assert.equal(translations.projectsTitle, 'Projects');
+  assert.equal(translations.featuredTitle, 'More work');
+  assert.equal(translations.hortelanTitle, 'Hortelan AgTech');
+  assert.equal(translations.hortelanTechnologies.length, 3);
   assert.match(translations.projects.githubDescription, /Repositories/);
 });
 

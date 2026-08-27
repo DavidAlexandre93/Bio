@@ -3,11 +3,13 @@ import { motion } from 'motion/react';
 import { useEffect, useMemo, useState } from 'react';
 import { Hero } from './components/Hero';
 import { LinksSection } from './components/LinksSection';
+import { ProjectShowcase } from './components/ProjectShowcase';
 import { ShareSection } from './components/ShareSection';
+import { SiteFooter } from './components/SiteFooter';
+import { SiteNav } from './components/SiteNav';
 import { SupportSection } from './components/SupportSection';
 import { getLocalizedData } from './data/links';
 import { getTranslations } from './i18n/translations';
-import { useHomeAnimations } from './hooks/useHomeAnimations';
 import { useGeolocatedLanguage } from './hooks/useGeolocatedLanguage';
 import { useSeoMeta } from './hooks/useSeoMeta';
 
@@ -23,11 +25,12 @@ const containerVariants = {
 };
 
 function App() {
-  useHomeAnimations();
-
   const language = useGeolocatedLanguage();
   const translations = useMemo(() => getTranslations(language), [language]);
-  const { profile, highlightedProjects, socialLinks } = useMemo(() => getLocalizedData(translations), [translations]);
+  const { profile, highlightedProjects, socialLinks } = useMemo(
+    () => getLocalizedData(translations),
+    [translations]
+  );
   const [referralCode, setReferralCode] = useState('');
 
   useSeoMeta({ language, profile });
@@ -54,27 +57,43 @@ function App() {
     <>
       <div className="scene-glow" aria-hidden="true" />
       <div className="scene-grid" aria-hidden="true" />
+      <SiteNav labels={translations} />
       {referralCode ? <p className="ref-banner">Referral ativo: {referralCode}</p> : null}
-      <Hero profile={profile} />
+      <Hero profile={profile} labels={translations} />
 
-      <motion.main initial="hidden" animate="show" variants={containerVariants}>
-        <motion.section className="links-section" variants={containerVariants} aria-label={translations.featuredTitle}>
+      <motion.main
+        className="main-content"
+        initial="hidden"
+        animate="show"
+        variants={containerVariants}
+      >
+        <ProjectShowcase labels={translations} />
+        <motion.section
+          className="links-section"
+          variants={containerVariants}
+          aria-label={translations.featuredTitle}
+        >
           <LinksSection
             title={translations.featuredTitle}
             description={translations.featuredDescription}
             links={highlightedProjects}
             sectionIndex={0}
           />
-          <SupportSection title={translations.supportTitle} />
-          <ShareSection language={language} />
-          <LinksSection
-            title={translations.socialTitle}
-            description={translations.socialDescription}
-            links={socialLinks}
-            sectionIndex={1}
-          />
+          <div id="contato">
+            <LinksSection
+              title={translations.socialTitle}
+              description={translations.socialDescription}
+              links={socialLinks}
+              sectionIndex={1}
+            />
+          </div>
+          <div className="utility-grid">
+            <SupportSection title={translations.supportTitle} />
+            <ShareSection language={language} />
+          </div>
         </motion.section>
       </motion.main>
+      <SiteFooter labels={translations} />
       <Analytics />
     </>
   );
