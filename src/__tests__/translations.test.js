@@ -10,6 +10,7 @@ import {
   normalizeLanguage
 } from '../i18n/translations.js';
 import { pickLanguageFromApi, pickLanguageFromBrowser } from '../i18n/languageDetection.js';
+import { getDiscoveryResults } from '../hooks/usePortfolioDiscovery.js';
 
 test('normalizeLanguage falls back to default locale', () => {
   assert.equal(normalizeLanguage('de-DE'), DEFAULT_LANGUAGE);
@@ -62,6 +63,22 @@ test('getLocalizedData creates complete frontend cards', () => {
   const data = getLocalizedData(translations);
 
   assert.equal(data.profile.role, 'Engenheiro de software');
+  assert.equal(data.featuredProject.title, 'Hortelan AgTech');
   assert.equal(data.highlightedProjects.length, 2);
   assert.equal(data.socialLinks.length, 5);
+});
+
+test('portfolio discovery ranks matching title and metadata locally', () => {
+  const links = [
+    { title: 'GitHub', description: 'Repositories', accent: 'Code', searchTerms: ['technical'] },
+    {
+      title: 'Hortelan',
+      description: 'Connected cultivation',
+      accent: 'AgTech',
+      searchTerms: ['sensors', 'data']
+    }
+  ];
+
+  assert.equal(getDiscoveryResults(links, 'data sensors')[0].title, 'Hortelan');
+  assert.equal(getDiscoveryResults(links, 'unknown').length, 0);
 });

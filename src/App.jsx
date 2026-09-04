@@ -2,6 +2,7 @@ import { Analytics } from '@vercel/analytics/react';
 import { motion } from 'motion/react';
 import { useEffect, useMemo, useState } from 'react';
 import { Hero } from './components/Hero';
+import { DiscoveryPanel } from './components/DiscoveryPanel';
 import { LinksSection } from './components/LinksSection';
 import { ProjectShowcase } from './components/ProjectShowcase';
 import { ShareSection } from './components/ShareSection';
@@ -27,7 +28,7 @@ const containerVariants = {
 function App() {
   const language = useGeolocatedLanguage();
   const translations = useMemo(() => getTranslations(language), [language]);
-  const { profile, highlightedProjects, socialLinks } = useMemo(
+  const { profile, featuredProject, highlightedProjects, socialLinks } = useMemo(
     () => getLocalizedData(translations),
     [translations]
   );
@@ -68,6 +69,11 @@ function App() {
         variants={containerVariants}
       >
         <ProjectShowcase labels={translations} />
+        <DiscoveryPanel
+          links={[featuredProject, ...highlightedProjects, ...socialLinks]}
+          labels={translations}
+          language={language}
+        />
         <motion.section
           className="links-section"
           variants={containerVariants}
