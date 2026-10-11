@@ -45,6 +45,10 @@ export function Hero({ profile, labels }) {
     trackEvent('cv_click', { language });
   };
 
+  const trackGraduationClick = () => {
+    trackEvent('graduation_click', { source: 'hero_cap' });
+  };
+
   return (
     <motion.header
       className="hero"
@@ -115,6 +119,34 @@ export function Hero({ profile, labels }) {
           />
           <div className="portrait-overlay" />
         </div>
+        <motion.a
+          className="graduation-cap-link"
+          href="https://davidalexandre93.github.io/formacao/"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={labels.openEducationLabel}
+          onClick={trackGraduationClick}
+          initial={{ opacity: 0, y: -10, rotate: -5 }}
+          animate={{ opacity: 1, y: [0, -3, 0], rotate: -5 }}
+          whileHover={{ scale: 1.045, rotate: -2, y: -4 }}
+          whileTap={{ scale: 0.98 }}
+          transition={{
+            opacity: { duration: 0.5, delay: 0.5 },
+            y: { duration: 3.4, repeat: Infinity, ease: 'easeInOut' },
+            rotate: { duration: 0.24 },
+            scale: { duration: 0.24 }
+          }}
+        >
+          <img
+            src="/assets/image/graduation-cap.png"
+            alt=""
+            width="1536"
+            height="1024"
+            loading="eager"
+            decoding="async"
+            aria-hidden="true"
+          />
+        </motion.a>
         <div className="portrait-note portrait-note-top">
           <span>DESIGN</span>
           <span>CODE</span>
