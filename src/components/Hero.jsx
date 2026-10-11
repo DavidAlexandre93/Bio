@@ -127,12 +127,11 @@ export function Hero({ profile, labels }) {
           aria-label={labels.openEducationLabel}
           onClick={trackGraduationClick}
           initial={{ opacity: 0, y: -10, rotate: -5 }}
-          animate={{ opacity: 1, y: [0, -3, 0], rotate: -5 }}
+          animate={{ opacity: 1, rotate: -5 }}
           whileHover={{ scale: 1.045, rotate: -2, y: -4 }}
           whileTap={{ scale: 0.98 }}
           transition={{
             opacity: { duration: 0.5, delay: 0.5 },
-            y: { duration: 3.4, repeat: Infinity, ease: 'easeInOut' },
             rotate: { duration: 0.24 },
             scale: { duration: 0.24 }
           }}

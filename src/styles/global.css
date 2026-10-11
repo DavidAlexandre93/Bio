@@ -477,13 +477,13 @@ img {
 }
 
 .graduation-cap-link {
-  width: 48%;
+  width: 50%;
   aspect-ratio: 3 / 2;
   display: grid;
   place-items: center;
   position: absolute;
-  top: -10%;
-  left: 26%;
+  top: -7%;
+  left: 20.5%;
   z-index: 5;
   border-radius: 50%;
   cursor: pointer;
