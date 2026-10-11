@@ -40,7 +40,7 @@ export function getLocalizedData(translations) {
       {
         title: 'Vercel',
         description: translations.projects.vercelDescription,
-        href: 'https://www.vercel.com/davidalexandrefernandes',
+        href: 'https://vercel.com/davidalexandrefernandes',
         icon: '/assets/icons/vercel.svg',
         accent: translations.projects.deployAccent,
         searchTerms: ['deploy', 'frontend', 'projects'],
@@ -49,7 +49,7 @@ export function getLocalizedData(translations) {
       {
         title: 'Linkedin',
         description: translations.projects.linkedinDescription,
-        href: 'https://www.linkedin.com/in/david-fernandes-08b005b4/',
+        href: 'https://www.linkedin.com/in/david-alexandre-fernandes-08b005b4/',
         icon: '/assets/icons/linkedin.svg',
         accent: translations.projects.networkingAccent,
         searchTerms: ['contact', 'network', 'professional'],
@@ -72,15 +72,6 @@ export function getLocalizedData(translations) {
         accent: translations.projects.codeAccent,
         searchTerms: ['code', 'technical', 'repositories'],
         gradient: 'linear-gradient(58deg, #a5a7ae 1%, #283137 99%)'
-      },
-      {
-        title: 'Calendly',
-        description: translations.projects.emailDescription,
-        href: 'https://calendly.com/davidalexandrefernandes',
-        icon: '/assets/icons/calendar.svg',
-        accent: translations.projects.contactAccent,
-        searchTerms: ['contact', 'schedule', 'partnership'],
-        gradient: 'linear-gradient(58deg, #a8acc1 1%, #15289a 99%)'
       }
     ]
   };

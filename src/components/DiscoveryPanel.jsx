@@ -108,7 +108,11 @@ export function DiscoveryPanel({ links, labels, language }) {
               {assistantState === 'loading' ? labels.assistantLoading : labels.assistantAction}
             </button>
           </div>
-          {assistantState === 'success' ? <p className="assistant-answer">{answer}</p> : null}
+          {assistantState === 'success' ? (
+            <p className="assistant-answer" aria-live="polite">
+              {answer}
+            </p>
+          ) : null}
           {assistantState === 'error' ? (
             <p className="assistant-error" role="alert">
               {labels.assistantUnavailable}

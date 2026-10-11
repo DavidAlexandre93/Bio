@@ -29,7 +29,6 @@ export function LinkCard({
       href={href}
       rel="noopener noreferrer"
       target="_blank"
-      aria-label={`${title} - ${description}`}
       variants={cardVariants}
       whileHover={{ y: -5 }}
       transition={{ duration: 0.25 }}

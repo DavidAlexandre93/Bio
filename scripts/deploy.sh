@@ -11,7 +11,7 @@ if [[ ! -d dist ]]; then
   exit 1
 fi
 
-RSYNC_SSH="ssh -o StrictHostKeyChecking=no"
+RSYNC_SSH="ssh -o StrictHostKeyChecking=accept-new"
 
 rsync -az --delete -e "$RSYNC_SSH" dist/ "${DEPLOY_USER}@${DEPLOY_HOST}:${DEPLOY_PATH}/"
 

@@ -29,7 +29,7 @@ export function NewsletterBanner({ labels }) {
         href={NEWSLETTER_URL}
         target="_blank"
         rel="noopener noreferrer"
-        aria-label={labels.newsletterAriaLabel}
+        aria-label={labels.newsletterButton}
         onClick={() => trackEvent('newsletter_subscribe_click', { platform: 'linkedin' })}
         whileHover={{ y: -2, scale: 1.015 }}
         whileTap={{ scale: 0.98 }}

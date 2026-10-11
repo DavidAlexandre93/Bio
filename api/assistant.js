@@ -3,6 +3,7 @@ import { generateAnswer } from './providers/openai.js';
 const attempts = new Map();
 const WINDOW_MS = 10 * 60 * 1000;
 const MAX_REQUESTS = 10;
+const MAX_TRACKED_IPS = 5000;
 const MAX_QUESTION_LENGTH = 600;
 const SUPPORTED_LANGUAGES = new Set(['pt-BR', 'en-US', 'fr-FR', 'ja-JP']);
 const context =
@@ -18,15 +19,34 @@ function getIp(request) {
 
 function isRateLimited(ip) {
   const now = Date.now();
-  const recent = (attempts.get(ip) || []).filter((timestamp) => now - timestamp < WINDOW_MS);
-  recent.push(now);
-  attempts.set(ip, recent);
-  return recent.length > MAX_REQUESTS;
+  let entry = attempts.get(ip);
+
+  if (!entry || now >= entry.resetAt) {
+    if (attempts.size >= MAX_TRACKED_IPS) {
+      for (const [trackedIp, trackedEntry] of attempts) {
+        if (now >= trackedEntry.resetAt) attempts.delete(trackedIp);
+      }
+
+      if (attempts.size >= MAX_TRACKED_IPS) {
+        attempts.delete(attempts.keys().next().value);
+      }
+    }
+
+    entry = { count: 0, resetAt: now + WINDOW_MS };
+    attempts.set(ip, entry);
+  }
+
+  entry.count += 1;
+  return entry.count > MAX_REQUESTS;
 }
 
 export default async function handler(request, response) {
-  if (request.method !== 'POST')
+  response.setHeader('Cache-Control', 'no-store');
+
+  if (request.method !== 'POST') {
+    response.setHeader('Allow', 'POST');
     return response.status(405).json({ error: 'Method not allowed', code: 'method_not_allowed' });
+  }
   if (isRateLimited(getIp(request)))
     return response.status(429).json({ error: 'Too many requests', code: 'rate_limited' });
 

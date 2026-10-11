@@ -84,6 +84,10 @@ Deploy automatizado por ambiente:
 - Production:
   - `PRD_DEPLOY_HOST`, `PRD_DEPLOY_USER`, `PRD_DEPLOY_PATH`
 
+O deploy verifica chaves SSH e rejeita alterações após o primeiro contato. Para fixar também a
+identidade no primeiro deploy, pré-carregue a chave pública verificada do host em `known_hosts` no
+runner antes de executar o script; sem isso, a primeira conexão usa confiança TOFU (`accept-new`).
+
 ## Autor
 
 David Alexandre Fernandes

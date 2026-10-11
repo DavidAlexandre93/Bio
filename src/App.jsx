@@ -1,5 +1,5 @@
 import { Analytics } from '@vercel/analytics/react';
-import { motion } from 'motion/react';
+import { MotionConfig, motion } from 'motion/react';
 import { useEffect, useMemo, useState } from 'react';
 import { Hero } from './components/Hero';
 import { DiscoveryPanel } from './components/DiscoveryPanel';
@@ -42,21 +42,28 @@ function App() {
   }, [language]);
 
   useEffect(() => {
-    const url = new URL(window.location.href);
-    const refFromQuery = url.searchParams.get('ref');
+    try {
+      const url = new URL(window.location.href);
+      const refFromQuery = url.searchParams.get('ref');
 
-    if (refFromQuery) {
-      localStorage.setItem('bio_referral_code', refFromQuery);
-      setReferralCode(refFromQuery);
-      return;
+      if (refFromQuery && refFromQuery.length <= 128) {
+        localStorage.setItem('bio_referral_code', refFromQuery);
+        setReferralCode(refFromQuery);
+        return;
+      }
+
+      const storedRef = localStorage.getItem('bio_referral_code');
+      setReferralCode(storedRef?.length <= 128 ? storedRef : '');
+    } catch {
+      setReferralCode('');
     }
-
-    const storedRef = localStorage.getItem('bio_referral_code');
-    setReferralCode(storedRef || '');
   }, []);
 
   return (
-    <>
+    <MotionConfig reducedMotion="user">
+      <a className="skip-link" href="#conteudo">
+        {translations.skipToContent}
+      </a>
       <div className="scene-glow" aria-hidden="true" />
       <div className="scene-grid" aria-hidden="true" />
       <SiteNav labels={translations} />
@@ -70,6 +77,8 @@ function App() {
 
       <motion.main
         className="main-content"
+        id="conteudo"
+        tabIndex={-1}
         initial="hidden"
         animate="show"
         variants={containerVariants}
@@ -107,7 +116,7 @@ function App() {
       </motion.main>
       <SiteFooter labels={translations} />
       <Analytics />
-    </>
+    </MotionConfig>
   );
 }
 

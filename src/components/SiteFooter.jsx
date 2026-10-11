@@ -7,7 +7,7 @@ export function SiteFooter({ labels }) {
         </span>
         <p>{labels.footerText}</p>
       </div>
-      <a href="#top" aria-label={labels.backToTopLabel}>
+      <a href="#top">
         {labels.backToTop}
         <span aria-hidden="true">↑</span>
       </a>

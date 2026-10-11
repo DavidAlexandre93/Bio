@@ -93,7 +93,16 @@ test('getLocalizedData creates complete frontend cards', () => {
   assert.equal(data.profile.role, 'Engenheiro de software');
   assert.equal(data.featuredProject.title, 'Hortelan AgTech');
   assert.equal(data.highlightedProjects.length, 2);
-  assert.equal(data.socialLinks.length, 5);
+  assert.equal(data.socialLinks.length, 4);
+  assert.equal(data.socialLinks.some((link) => link.title === 'Calendly'), false);
+  assert.equal(
+    data.socialLinks.find((link) => link.title === 'Linkedin').href,
+    'https://www.linkedin.com/in/david-alexandre-fernandes-08b005b4/'
+  );
+  assert.equal(
+    data.socialLinks.find((link) => link.title === 'Vercel').href,
+    'https://vercel.com/davidalexandrefernandes'
+  );
 });
 
 test('portfolio discovery ranks matching title and metadata locally', () => {

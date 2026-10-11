@@ -101,8 +101,8 @@ export function useSeoMeta({ language, profile }) {
       jobTitle: profile.role,
       sameAs: [
         'https://github.com/DavidAlexandre93',
-        'https://www.linkedin.com/in/david-fernandes-08b005b4/',
-        'https://www.vercel.com/davidalexandrefernandes'
+        'https://www.linkedin.com/in/david-alexandre-fernandes-08b005b4/',
+        'https://vercel.com/davidalexandrefernandes'
       ]
     };
 

@@ -9,11 +9,10 @@ export function SiteNav({ labels }) {
       transition={{ duration: 0.55, ease: 'easeOut' }}
       aria-label={labels.navLabel}
     >
-      <a className="site-brand" href="#top" aria-label={labels.navHomeLabel}>
-        <span className="site-brand-mark" aria-hidden="true">
-          DAF
-        </span>
+      <a className="site-brand" href="#top">
+        <span className="site-brand-mark">DAF</span>
         <span className="site-brand-name">David Fernandes</span>
+        <span className="visually-hidden">{labels.navHomeLabel}</span>
       </a>
 
       <div className="site-nav-links">

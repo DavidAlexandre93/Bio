@@ -54,7 +54,7 @@ export function Hero({ profile, labels }) {
       className="hero"
       id="top"
       variants={heroContainer}
-      initial="hidden"
+      initial={false}
       animate="show"
     >
       <div className="hero-copy">
@@ -108,15 +108,23 @@ export function Hero({ profile, labels }) {
 
       <motion.div className="hero-visual" variants={heroItem}>
         <div className="portrait-frame">
-          <img
-            className="profile"
-            src={profile.image}
-            alt={profile.imageAlt}
-            width="640"
-            height="800"
-            loading="eager"
-            decoding="async"
-          />
+          <picture>
+            <source
+              type="image/webp"
+              srcSet="/assets/image/perfil-480.webp 480w, /assets/image/perfil-640.webp 640w, /assets/image/perfil-854.webp 854w"
+              sizes="(max-width: 480px) min(82vw, 330px), (max-width: 760px) min(80vw, 370px), (max-width: 980px) 38vw, 448px"
+            />
+            <img
+              className="profile"
+              src={profile.image}
+              alt={profile.imageAlt}
+              width="854"
+              height="1280"
+              loading="eager"
+              fetchPriority="high"
+              decoding="async"
+            />
+          </picture>
           <div className="portrait-overlay" />
         </div>
         <motion.a
@@ -136,15 +144,23 @@ export function Hero({ profile, labels }) {
             scale: { duration: 0.24 }
           }}
         >
-          <img
-            src="/assets/image/graduation-cap.png"
-            alt=""
-            width="1536"
-            height="1024"
-            loading="eager"
-            decoding="async"
-            aria-hidden="true"
-          />
+          <picture>
+            <source
+              type="image/webp"
+              srcSet="/assets/image/graduation-cap-225.webp 225w, /assets/image/graduation-cap.webp 450w"
+              sizes="(max-width: 480px) min(41vw, 165px), (max-width: 980px) 185px, 224px"
+            />
+            <img
+              src="/assets/image/graduation-cap.png"
+              alt=""
+              width="1536"
+              height="1024"
+              loading="eager"
+              fetchPriority="low"
+              decoding="async"
+              aria-hidden="true"
+            />
+          </picture>
         </motion.a>
         <div className="portrait-note portrait-note-top">
           {labels.heroPillars.map((pillar) => (
