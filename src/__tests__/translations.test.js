@@ -7,13 +7,39 @@ import {
   getLanguageFromCountry,
   getTranslations,
   isSupportedLanguage,
-  normalizeLanguage
+  normalizeLanguage,
+  SUPPORTED_LANGUAGES
 } from '../i18n/translations.js';
 import { pickLanguageFromApi, pickLanguageFromBrowser } from '../i18n/languageDetection.js';
 import { getDiscoveryResults } from '../hooks/usePortfolioDiscovery.js';
 
+function getTranslationShape(value) {
+  if (Array.isArray(value)) {
+    return value.map(() => null);
+  }
+
+  if (value && typeof value === 'object') {
+    return Object.fromEntries(
+      Object.entries(value)
+        .sort(([left], [right]) => left.localeCompare(right))
+        .map(([key, nestedValue]) => [key, getTranslationShape(nestedValue)])
+    );
+  }
+
+  return typeof value;
+}
+
 test('normalizeLanguage falls back to default locale', () => {
   assert.equal(normalizeLanguage('de-DE'), DEFAULT_LANGUAGE);
+  assert.equal(getTranslations('de-DE'), getTranslations(DEFAULT_LANGUAGE));
+});
+
+test('every supported locale has the same translation keys', () => {
+  const expectedShape = getTranslationShape(getTranslations(DEFAULT_LANGUAGE));
+
+  for (const language of SUPPORTED_LANGUAGES) {
+    assert.deepEqual(getTranslationShape(getTranslations(language)), expectedShape, language);
+  }
 });
 
 test('country code is translated to locale', () => {

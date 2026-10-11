@@ -20,7 +20,6 @@ export function LinkCard({
   accent,
   href,
   icon,
-  iconAlt,
   gradient,
   sectionIndex = 0,
   cardIndex = 0
@@ -48,7 +47,7 @@ export function LinkCard({
         <div className="link-card-icon-wrap">
           <motion.img
             src={icon}
-            alt={iconAlt}
+            alt=""
             width="28"
             height="28"
             loading="lazy"

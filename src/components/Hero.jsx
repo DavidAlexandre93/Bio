@@ -21,19 +21,19 @@ const heroItem = {
 
 const resumeLinks = [
   {
-    label: 'Currículo PT-BR',
+    version: 'ptBr',
     shortLabel: 'PT-BR',
     href: '/assets/curriculos/curriculo-david-alexandre-fernandes-pt-br.pdf',
     language: 'pt-br'
   },
   {
-    label: 'Currículo EUR',
+    version: 'eur',
     shortLabel: 'EUR',
     href: '/assets/curriculos/resume-david-alexandre-fernandes-eur.pdf',
     language: 'eur'
   },
   {
-    label: 'Currículo EN',
+    version: 'en',
     shortLabel: 'EN',
     href: '/assets/curriculos/resume-david-alexandre-fernandes-en.pdf',
     language: 'en'
@@ -96,7 +96,7 @@ export function Hero({ profile, labels }) {
                 <svg className="resume-icon" viewBox="0 0 24 24" aria-hidden="true">
                   <path d="M7 3h7l4 4v14H7zM14 3v5h5M10 13h5M10 17h5" />
                 </svg>
-                <span>{resume.label}</span>
+                <span>{labels.resumeVersions[resume.version]}</span>
                 <svg className="resume-arrow" viewBox="0 0 24 24" aria-hidden="true">
                   <path d="M7 17 17 7M9 7h8v8" />
                 </svg>
@@ -147,13 +147,15 @@ export function Hero({ profile, labels }) {
           />
         </motion.a>
         <div className="portrait-note portrait-note-top">
-          <span>DESIGN</span>
-          <span>CODE</span>
-          <span>IMPACT</span>
+          {labels.heroPillars.map((pillar) => (
+            <span key={pillar}>{pillar}</span>
+          ))}
         </div>
         <div className="portrait-note portrait-note-bottom">
           <small>{labels.basedIn}</small>
-          <strong>Brasil · 2026</strong>
+          <strong>
+            {labels.countryName} · {new Date().getFullYear()}
+          </strong>
         </div>
       </motion.div>
     </motion.header>

@@ -1,6 +1,6 @@
 import { motion } from 'motion/react';
 
-export function SupportSection({ title }) {
+export function SupportSection({ labels }) {
   return (
     <motion.div
       className="support"
@@ -11,14 +11,14 @@ export function SupportSection({ title }) {
       transition={{ duration: 0.65, ease: 'easeOut' }}
     >
       <div>
-        <span className="support-kicker">OPEN SOURCE</span>
+        <span className="support-kicker">{labels.supportKicker}</span>
         <motion.h2
           initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.8 }}
           transition={{ duration: 0.45, delay: 0.1 }}
         >
-          {title}
+          {labels.supportTitle}
         </motion.h2>
       </div>
       <motion.a
@@ -31,7 +31,7 @@ export function SupportSection({ title }) {
         transition={{ type: 'spring', stiffness: 330, damping: 18 }}
       >
         <span aria-hidden="true">☕</span>
-        Buy me a coffee
+        {labels.supportAction}
         <span aria-hidden="true">↗</span>
       </motion.a>
     </motion.div>

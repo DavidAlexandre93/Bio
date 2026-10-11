@@ -1,39 +1,8 @@
 import { motion } from 'motion/react';
 
-const SHARE_LABELS = {
-  'pt-BR': {
-    title: 'Compartilhe este hub',
-    subtitle: 'Ajude este conteúdo a alcançar mais pessoas.',
-    x: 'Compartilhar no X',
-    linkedin: 'Compartilhar no LinkedIn',
-    whatsapp: 'Compartilhar no WhatsApp'
-  },
-  'en-US': {
-    title: 'Share this hub',
-    subtitle: 'Help this content reach more people.',
-    x: 'Share on X',
-    linkedin: 'Share on LinkedIn',
-    whatsapp: 'Share on WhatsApp'
-  },
-  'fr-FR': {
-    title: 'Partagez ce hub',
-    subtitle: 'Aidez ce contenu à toucher plus de personnes.',
-    x: 'Partager sur X',
-    linkedin: 'Partager sur LinkedIn',
-    whatsapp: 'Partager sur WhatsApp'
-  },
-  'ja-JP': {
-    title: 'このハブを共有',
-    subtitle: 'より多くの人にこのコンテンツを届けましょう。',
-    x: 'Xで共有',
-    linkedin: 'LinkedInで共有',
-    whatsapp: 'WhatsAppで共有'
-  }
-};
-
-function buildShareLinks() {
+function buildShareLinks(message) {
   const currentUrl = encodeURIComponent(window.location.href);
-  const text = encodeURIComponent('Confira o hub do David Alexandre Fernandes com projetos e links profissionais.');
+  const text = encodeURIComponent(message);
 
   return {
     x: `https://twitter.com/intent/tweet?url=${currentUrl}&text=${text}`,
@@ -42,9 +11,8 @@ function buildShareLinks() {
   };
 }
 
-export function ShareSection({ language }) {
-  const labels = SHARE_LABELS[language] || SHARE_LABELS['en-US'];
-  const shareLinks = buildShareLinks();
+export function ShareSection({ labels }) {
+  const shareLinks = buildShareLinks(labels.share.message);
 
   return (
     <motion.section
@@ -53,19 +21,19 @@ export function ShareSection({ language }) {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.45 }}
       transition={{ duration: 0.5 }}
-      aria-label={labels.title}
+      aria-label={labels.share.title}
     >
-      <h2>{labels.title}</h2>
-      <p>{labels.subtitle}</p>
+      <h2>{labels.share.title}</h2>
+      <p>{labels.share.subtitle}</p>
       <div className="share-buttons">
         <a href={shareLinks.x} target="_blank" rel="noopener noreferrer">
-          {labels.x}
+          {labels.share.x}
         </a>
         <a href={shareLinks.linkedin} target="_blank" rel="noopener noreferrer">
-          {labels.linkedin}
+          {labels.share.linkedin}
         </a>
         <a href={shareLinks.whatsapp} target="_blank" rel="noopener noreferrer">
-          {labels.whatsapp}
+          {labels.share.whatsapp}
         </a>
       </div>
     </motion.section>

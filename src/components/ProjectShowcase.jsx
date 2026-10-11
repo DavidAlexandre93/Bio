@@ -59,20 +59,20 @@ export function ProjectShowcase({ labels }) {
               <span />
               <span />
               <span />
-              <small>HORTELAN / LIVE</small>
+              <small>{labels.dashboard.live}</small>
             </div>
             <div className="dashboard-content">
               <div className="dashboard-topline">
                 <div>
-                  <small>AMBIENTE</small>
-                  <strong>Horta conectada</strong>
+                  <small>{labels.dashboard.environment}</small>
+                  <strong>{labels.dashboard.garden}</strong>
                 </div>
-                <span className="live-indicator">ONLINE</span>
+                <span className="live-indicator">{labels.dashboard.online}</span>
               </div>
 
               <div className="sensor-grid">
                 <div className="sensor-card sensor-card-main">
-                  <small>Umidade do solo</small>
+                  <small>{labels.dashboard.soilMoisture}</small>
                   <strong>72%</strong>
                   <div className="sensor-chart">
                     <i style={{ height: '46%' }} />
@@ -84,14 +84,14 @@ export function ProjectShowcase({ labels }) {
                   </div>
                 </div>
                 <div className="sensor-card sensor-card-stat">
-                  <small>Temperatura</small>
+                  <small>{labels.dashboard.temperature}</small>
                   <strong>24°</strong>
-                  <span>ideal</span>
+                  <span>{labels.dashboard.ideal}</span>
                 </div>
                 <div className="sensor-card sensor-card-stat">
-                  <small>Irrigação</small>
-                  <strong>Auto</strong>
-                  <span>ativa</span>
+                  <small>{labels.dashboard.irrigation}</small>
+                  <strong>{labels.dashboard.automatic}</strong>
+                  <span>{labels.dashboard.active}</span>
                 </div>
               </div>
             </div>

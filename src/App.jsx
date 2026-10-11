@@ -60,7 +60,11 @@ function App() {
       <div className="scene-glow" aria-hidden="true" />
       <div className="scene-grid" aria-hidden="true" />
       <SiteNav labels={translations} />
-      {referralCode ? <p className="ref-banner">Referral ativo: {referralCode}</p> : null}
+      {referralCode ? (
+        <p className="ref-banner">
+          {translations.referralLabel}: {referralCode}
+        </p>
+      ) : null}
       <NewsletterBanner labels={translations} />
       <Hero profile={profile} labels={translations} />
 
@@ -96,8 +100,8 @@ function App() {
             />
           </div>
           <div className="utility-grid">
-            <SupportSection title={translations.supportTitle} />
-            <ShareSection language={language} />
+            <SupportSection labels={translations} />
+            <ShareSection labels={translations} />
           </div>
         </motion.section>
       </motion.main>
