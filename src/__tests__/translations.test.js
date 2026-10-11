@@ -55,6 +55,7 @@ test('getTranslations returns localized metadata', () => {
   assert.equal(translations.featuredTitle, 'More work');
   assert.equal(translations.hortelanTitle, 'Hortelan AgTech');
   assert.equal(translations.hortelanTechnologies.length, 3);
+  assert.equal(translations.newsletterButton, 'Subscribe on LinkedIn');
   assert.match(translations.projects.githubDescription, /Repositories/);
 });
 

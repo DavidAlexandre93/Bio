@@ -163,6 +163,132 @@ img {
   font-size: 1.25rem;
 }
 
+.newsletter-banner {
+  min-height: 104px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 28px;
+  margin-top: 20px;
+  padding: 20px 22px;
+  overflow: hidden;
+  border: 1px solid rgba(74, 153, 232, 0.36);
+  border-radius: 18px;
+  background:
+    radial-gradient(circle at 8% 20%, rgba(10, 102, 194, 0.22), transparent 34%),
+    linear-gradient(120deg, rgba(12, 32, 51, 0.92), rgba(10, 16, 22, 0.94) 62%);
+  box-shadow:
+    0 20px 65px rgba(0, 0, 0, 0.24),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  position: relative;
+}
+
+.newsletter-banner::after {
+  content: '';
+  position: absolute;
+  width: 220px;
+  height: 220px;
+  top: -160px;
+  right: 120px;
+  border-radius: 50%;
+  background: rgba(163, 255, 95, 0.1);
+  filter: blur(18px);
+  pointer-events: none;
+}
+
+.newsletter-copy {
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  gap: 17px;
+  position: relative;
+  z-index: 1;
+}
+
+.newsletter-icon {
+  width: 52px;
+  height: 52px;
+  display: grid;
+  place-items: center;
+  flex: 0 0 auto;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 14px;
+  background: #0a66c2;
+  color: #fff;
+  font-family: Arial, sans-serif;
+  font-size: 2.2rem;
+  font-weight: 800;
+  letter-spacing: -0.08em;
+  box-shadow: 0 10px 30px rgba(10, 102, 194, 0.32);
+}
+
+.newsletter-eyebrow {
+  display: block;
+  margin-bottom: 4px;
+  color: #75baff;
+  font-size: 0.98rem;
+  font-weight: 750;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.newsletter-copy strong {
+  display: block;
+  font-family: var(--display);
+  font-size: clamp(1.55rem, 2vw, 1.9rem);
+  line-height: 1.2;
+  letter-spacing: -0.025em;
+}
+
+.newsletter-copy p {
+  margin-top: 4px;
+  color: var(--muted);
+  font-size: 1.18rem;
+  line-height: 1.45;
+}
+
+.libutton {
+  width: 200px;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  flex: 0 0 auto;
+  padding: 7px 15px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 999px;
+  outline: none;
+  background-color: #0a66c2;
+  color: #ffffff !important;
+  font-family: 'SF Pro Text', Helvetica, Arial, sans-serif;
+  font-size: 1.25rem;
+  font-weight: 650;
+  text-align: center;
+  text-decoration: none !important;
+  box-shadow: 0 12px 32px rgba(10, 102, 194, 0.3);
+  position: relative;
+  z-index: 2;
+  transition:
+    background-color 180ms ease,
+    box-shadow 180ms ease;
+}
+
+.libutton svg {
+  width: 17px;
+  height: 17px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.libutton:hover {
+  background-color: #0b75dc;
+  box-shadow: 0 16px 38px rgba(10, 102, 194, 0.42);
+}
+
 .hero {
   min-height: min(790px, calc(100vh - 84px));
   display: grid;
@@ -1223,6 +1349,17 @@ button:focus-visible {
     gap: 20px;
   }
 
+  .newsletter-banner {
+    align-items: stretch;
+    flex-direction: column;
+    gap: 18px;
+    padding: 20px;
+  }
+
+  .libutton {
+    width: 100%;
+  }
+
   .hero {
     min-height: auto;
     grid-template-columns: 1fr;
@@ -1295,6 +1432,31 @@ button:focus-visible {
   }
   .site-nav-links a {
     font-size: 1.2rem;
+  }
+
+  .newsletter-banner {
+    border-radius: 15px;
+    padding: 17px;
+  }
+
+  .newsletter-copy {
+    align-items: flex-start;
+    gap: 13px;
+  }
+
+  .newsletter-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    font-size: 1.85rem;
+  }
+
+  .newsletter-copy strong {
+    font-size: 1.52rem;
+  }
+
+  .newsletter-copy p {
+    font-size: 1.12rem;
   }
   .hero {
     gap: 48px;

@@ -4,6 +4,7 @@ import { useEffect, useMemo, useState } from 'react';
 import { Hero } from './components/Hero';
 import { DiscoveryPanel } from './components/DiscoveryPanel';
 import { LinksSection } from './components/LinksSection';
+import { NewsletterBanner } from './components/NewsletterBanner';
 import { ProjectShowcase } from './components/ProjectShowcase';
 import { ShareSection } from './components/ShareSection';
 import { SiteFooter } from './components/SiteFooter';
@@ -60,6 +61,7 @@ function App() {
       <div className="scene-grid" aria-hidden="true" />
       <SiteNav labels={translations} />
       {referralCode ? <p className="ref-banner">Referral ativo: {referralCode}</p> : null}
+      <NewsletterBanner labels={translations} />
       <Hero profile={profile} labels={translations} />
 
       <motion.main

@@ -13,6 +13,11 @@ const translations = {
     navLabel: 'Primary navigation',
     navProjects: 'Projects',
     navContact: 'Contact',
+    newsletterEyebrow: 'LinkedIn newsletter',
+    newsletterTitle: 'Follow David’s next publications.',
+    newsletterDescription: 'Subscribe once and keep up with new posts directly on LinkedIn.',
+    newsletterButton: 'Subscribe on LinkedIn',
+    newsletterAriaLabel: 'Subscribe to David’s newsletter on LinkedIn',
     available: 'Available for new projects',
     heroEyebrow: 'Creative engineering · Digital products',
     heroIntroduction:
@@ -84,6 +89,11 @@ const translations = {
     navLabel: 'Navegação principal',
     navProjects: 'Projetos',
     navContact: 'Contato',
+    newsletterEyebrow: 'Newsletter no LinkedIn',
+    newsletterTitle: 'Acompanhe as próximas publicações do David.',
+    newsletterDescription: 'Assine uma vez e acompanhe novos conteúdos diretamente pelo LinkedIn.',
+    newsletterButton: 'Assinar no LinkedIn',
+    newsletterAriaLabel: 'Assinar a newsletter do David no LinkedIn',
     available: 'Disponível para novos projetos',
     heroEyebrow: 'Engenharia criativa · Produtos digitais',
     heroIntroduction:
@@ -154,6 +164,12 @@ const translations = {
     navLabel: 'Navigation principale',
     navProjects: 'Projets',
     navContact: 'Contact',
+    newsletterEyebrow: 'Newsletter LinkedIn',
+    newsletterTitle: 'Suivez les prochaines publications de David.',
+    newsletterDescription:
+      'Abonnez-vous une fois et suivez les nouveaux contenus directement sur LinkedIn.',
+    newsletterButton: 'S’abonner sur LinkedIn',
+    newsletterAriaLabel: 'S’abonner à la newsletter de David sur LinkedIn',
     available: 'Disponible pour de nouveaux projets',
     heroEyebrow: 'Ingénierie créative · Produits numériques',
     heroIntroduction:
@@ -224,6 +240,11 @@ const translations = {
     navLabel: 'メインナビゲーション',
     navProjects: 'プロジェクト',
     navContact: 'お問い合わせ',
+    newsletterEyebrow: 'LinkedInニュースレター',
+    newsletterTitle: 'Davidの新しい投稿をフォロー。',
+    newsletterDescription: '一度登録するだけで、LinkedInから新しいコンテンツを確認できます。',
+    newsletterButton: 'LinkedInで登録',
+    newsletterAriaLabel: 'LinkedInでDavidのニュースレターを購読する',
     available: '新規プロジェクト受付中',
     heroEyebrow: 'クリエイティブエンジニアリング · デジタルプロダクト',
     heroIntroduction:
